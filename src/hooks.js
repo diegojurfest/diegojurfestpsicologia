@@ -46,5 +46,5 @@ export function useScrollReveal() {
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
 
     return () => observer.disconnect()
-  })
+  }, [])
 }
