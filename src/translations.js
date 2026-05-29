@@ -40,7 +40,7 @@ export const translations = {
       ['Vínculos familiares y de pareja', 'Vínculos a distancia, conflictos por mudanza o nuevas rutinas, comunicación, lazos puestos a prueba.'],
       ['Crisis vitales y de sentido', 'Momentos de pregunta profunda sobre quién sos, qué hacés, hacia dónde vas.'],
       ['Procesos de cambio personal', 'Decisiones grandes, transiciones de vida, reinvención, búsqueda de claridad.'],
-      ['Otras áreas', 'Si lo que atravesás no aparece en esta lista, escribime igual. Conversamos y vemos juntos si puedo acompañarte, o cómo ayudarte a encontrar quien lo haga.'],
+      ['Otras áreas', 'Si lo que atravesás no aparece en esta lista, escribime igual. Conversamos y vemos juntos si puedo acompañarte, o cómo ayudarte a encontrar a alguien que lo haga.'],
     ],
 
     approach_eyebrow: 'CÓMO TRABAJO',
@@ -77,7 +77,7 @@ export const translations = {
     contact_btn_mail: 'Enviame un mail',
 
     footer_credential: 'LICENCIADO EN PSICOLOGÍA',
-    footer_services: 'TERAPIA · ACOMPAÑAMIENTO PSICOLÓGICO · DISPONIBILIDAD FLEXIBLE',
+    footer_services: 'TERAPIA · ACOMPAÑAMIENTO PSICOLÓGICO · ATENCIÓN INMEDIATA',
     footer_meta: 'Atención online en español e inglés · desde cualquier parte del mundo',
     footer_bottom: '© 2026 Diego Jurfest · Todos los derechos reservados',
 
@@ -164,7 +164,7 @@ export const translations = {
     contact_btn_mail: 'Send me an email',
 
     footer_credential: 'LICENSED PSYCHOLOGIST',
-    footer_services: 'THERAPY · CLINICAL SUPPORT · FLEXIBLE AVAILABILITY',
+    footer_services: 'THERAPY · CLINICAL SUPPORT · IMMEDIATE AVAILABILITY',
     footer_meta: 'Online sessions in Spanish and English · available worldwide',
     footer_bottom: '© 2026 Diego Jurfest · All rights reserved',
 
@@ -251,7 +251,7 @@ export const translations = {
     contact_btn_mail: 'שלח לי מייל',
 
     footer_credential: 'פסיכולוג מוסמך',
-    footer_services: 'טיפול · ליווי פסיכולוגי · זמינות גמישה',
+    footer_services: 'טיפול · ליווי פסיכולוגי · זמינות מיידית',
     footer_meta: 'פגישות אונליין בספרדית ואנגלית · זמין מכל מקום בעולם',
     footer_bottom: '© 2026 דייגו יורפסט · כל הזכויות שמורות',
 
