@@ -1,0 +1,27 @@
+{
+  "name": "Diego Jurfest Psicología",
+  "short_name": "D. Jurfest",
+  "description": "Psicología online para jóvenes y adultos. En tu idioma, donde sea que estés.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#2C2C2C",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}

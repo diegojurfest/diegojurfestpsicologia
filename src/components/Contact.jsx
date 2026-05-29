@@ -10,7 +10,7 @@ export default function Contact({ t, waUrl, mailUrl }) {
           <p className="section-lead">{t.contact_lead}</p>
         </div>
         <div className="contact-buttons reveal">
-          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="contact-btn contact-btn-primary">
+          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="contact-btn contact-btn-primary" onClick={() => window.gtag?.('event', 'whatsapp_click', { location: 'contact' })}>
             <span>{t.contact_btn_wa}</span>
             <span>→</span>
           </a>

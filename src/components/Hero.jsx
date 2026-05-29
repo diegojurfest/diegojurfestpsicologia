@@ -10,7 +10,7 @@ export default function Hero({ t, waUrl }) {
           <div className="hero-credential">{t.hero_credential}</div>
           <p className="hero-headline">{t.hero_headline}</p>
           <div className="hero-cta-wrap">
-            <a href={waUrl} target="_blank" rel="noopener noreferrer" className="hero-cta">
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" className="hero-cta" onClick={() => window.gtag?.('event', 'whatsapp_click', { location: 'hero' })}>
               <span>{t.hero_cta_text}</span>
               <span className="hero-cta-arrow">→</span>
             </a>

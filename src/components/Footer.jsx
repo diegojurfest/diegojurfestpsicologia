@@ -12,7 +12,7 @@ export default function Footer({ t, waUrl, mailUrl }) {
       <div className="footer-credential">{t.footer_credential}</div>
       <div className="footer-services">{t.footer_services}</div>
       <div className="footer-contact">
-        <a href={waUrl} target="_blank" rel="noopener noreferrer">WhatsApp · +598 93 383 251</a>
+        <a href={waUrl} target="_blank" rel="noopener noreferrer" onClick={() => window.gtag?.('event', 'whatsapp_click', { location: 'footer' })}>WhatsApp · +598 93 383 251</a>
         <span>·</span>
         <a href={mailUrl}>diegojurfest@gmail.com</a>
       </div>
