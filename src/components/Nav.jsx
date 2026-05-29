@@ -13,7 +13,10 @@ export default function Nav({ t, lang, setLang }) {
 
   return (
     <nav className="nav">
-      <div className="nav-brand">Lic. Diego Jurfest</div>
+      <a className="nav-brand" href="#top">
+        <img className="nav-logo" src="/favicon.png" alt="" aria-hidden="true" />
+        <span>Lic. Diego Jurfest</span>
+      </a>
 
       <div className="nav-links">
         {links.map(([href, label]) => (

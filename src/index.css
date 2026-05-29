@@ -46,12 +46,24 @@ body {
   border-bottom: 1px solid rgba(15, 110, 86, 0.08);
 }
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
   font-family: var(--serif);
   font-size: 20px;
   font-weight: 500;
   color: var(--teal-dark);
   letter-spacing: 0.5px;
+  text-decoration: none;
 }
+.nav-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-brand:hover .nav-logo { transform: rotate(-6deg) scale(1.05); }
 .nav-links {
   display: flex;
   gap: 28px;
@@ -75,8 +87,8 @@ body {
   bottom: -6px;
   width: 0;
   height: 1px;
-  background: var(--teal);
-  transition: width 0.3s ease;
+  background: var(--terracotta);
+  transition: width 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-links a:hover::after { width: 100%; }
 
@@ -291,33 +303,48 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   animation: fadeUp 1s ease 0.6s both;
 }
 .hero-photo-ring {
-  width: 360px;
-  height: 440px;
-  border-radius: 180px 180px 32px 32px;
+  width: 420px;
+  height: 480px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  background: linear-gradient(160deg, var(--teal-faint) 0%, var(--cream) 100%);
-  overflow: hidden;
+  /* fondo salvia orgánico: aura suave, sin bordes */
+  background: radial-gradient(58% 56% at 50% 40%, var(--teal-faint) 0%, rgba(15, 110, 86, 0.05) 46%, transparent 72%);
 }
-.hero-photo-ring::before {
-  content: '';
+/* hojas botánicas decorativas (sombra sutil, tipo og-image) */
+.hero-leaf {
   position: absolute;
-  inset: -14px;
-  border: 1px solid rgba(15, 110, 86, 0.12);
-  border-radius: 190px 190px 40px 40px;
+  width: 150px;
+  height: 150px;
+  color: rgba(15, 110, 86, 0.13);
+  filter: blur(0.3px);
   pointer-events: none;
+  animation: leafFloat 9s ease-in-out infinite;
+}
+.hero-leaf svg { width: 100%; height: 100%; display: block; }
+.hero-leaf-1 { top: 4%; left: -6%; --leaf-rot: -22deg; }
+.hero-leaf-2 { bottom: 8%; right: -8%; width: 120px; height: 120px; --leaf-rot: 150deg; animation-delay: -3s; color: rgba(15, 110, 86, 0.10); }
+.hero-leaf-3 { top: 40%; right: -10%; width: 90px; height: 90px; --leaf-rot: 40deg; animation-delay: -6s; color: rgba(201, 121, 77, 0.10); }
+@keyframes leafFloat {
+  0%, 100% { transform: translateY(0) rotate(var(--leaf-rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--leaf-rot, 0deg)); }
 }
 .hero-photo-img {
-  width: 100%;
+  width: 92%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  border-radius: 180px 180px 32px 32px;
+  object-position: center 18%;
+  position: relative;
+  z-index: 1;
+  /* desvanecido elíptico: recorta el fondo gris y disuelve los bordes en la página */
+  -webkit-mask-image: radial-gradient(54% 62% at 50% 38%, #000 50%, rgba(0,0,0,0.55) 66%, transparent 80%);
+          mask-image: radial-gradient(54% 62% at 50% 38%, #000 50%, rgba(0,0,0,0.55) 66%, transparent 80%);
+  filter: saturate(1.03) contrast(1.01);
 }
 
 /* ============ SECTION GENERIC ============ */
@@ -628,6 +655,14 @@ footer::before {
   0%, 100% { transform: scale(1); opacity: 0.4; }
   50% { transform: scale(1.4); opacity: 0.9; }
 }
+.footer-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 18px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
 .footer-name {
   font-family: var(--serif);
   font-size: 28px;
@@ -716,9 +751,10 @@ footer::before {
   .hero-cta-wrap { align-items: center; }
   .hero-subcta { margin-left: 0; }
   [dir="rtl"] .hero-subcta { margin-right: 0; }
-  .hero-photo-ring { width: 260px; height: 320px; border-radius: 130px 130px 24px 24px; }
-  .hero-photo-img { border-radius: 130px 130px 24px 24px; }
-  .hero-photo-ring::before { border-radius: 138px 138px 30px 30px; }
+  .hero-photo-ring { width: 300px; height: 340px; }
+  .hero-leaf-1 { width: 100px; height: 100px; }
+  .hero-leaf-2 { width: 84px; height: 84px; }
+  .hero-leaf-3 { display: none; }
   section { padding: 80px 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-side { position: static; }

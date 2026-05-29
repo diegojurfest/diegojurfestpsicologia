@@ -8,6 +8,7 @@ export default function Footer({ t, waUrl, mailUrl }) {
         <div className="dot"></div>
         <div className="line"></div>
       </div>
+      <img className="footer-logo" src="/apple-touch-icon.png" alt="" aria-hidden="true" />
       <div className="footer-name">Diego Jurfest</div>
       <div className="footer-credential">{t.footer_credential}</div>
       <div className="footer-services">{t.footer_services}</div>
