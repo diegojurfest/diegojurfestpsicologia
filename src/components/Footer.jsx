@@ -1,3 +1,5 @@
+import Monogram from './Monogram'
+
 export default function Footer({ t, waUrl, mailUrl }) {
   return (
     <footer>
@@ -8,7 +10,7 @@ export default function Footer({ t, waUrl, mailUrl }) {
         <div className="dot"></div>
         <div className="line"></div>
       </div>
-      <img className="footer-logo" src="/favicon.png" alt="" aria-hidden="true" />
+      <Monogram className="footer-logo" />
       <div className="footer-name">Diego Jurfest</div>
       <div className="footer-credential">{t.footer_credential}</div>
       <div className="footer-services">{t.footer_services}</div>

@@ -59,10 +59,12 @@ body {
 .nav-logo {
   width: 34px;
   height: 34px;
-  border-radius: 9px;
   display: block;
+  flex-shrink: 0;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.nav-logo .mono-badge { fill: var(--teal); }
+.nav-logo .mono-letters { fill: var(--cream); }
 .nav-brand:hover .nav-logo { transform: rotate(-6deg) scale(1.05); }
 .nav-links {
   display: flex;
@@ -647,11 +649,11 @@ footer::before {
 .footer-logo {
   width: 46px;
   height: 46px;
-  border-radius: 12px;
   display: block;
   margin: 0 auto 14px;
-  opacity: 0.95;
 }
+.footer-logo .mono-badge { fill: none; stroke: var(--teal-soft); stroke-width: 1; opacity: 0.5; }
+.footer-logo .mono-letters { fill: var(--teal-faint); }
 .footer-name {
   font-family: var(--serif);
   font-size: 28px;
