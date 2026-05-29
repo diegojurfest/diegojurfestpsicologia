@@ -25,7 +25,7 @@ export const translations = {
     about_p2: 'También soy un joven judío uruguayo, hijo único, futbolero y apasionado por lo que hago. Hablo español, inglés, y cada día mejoro un poco más mi hebreo. Fui toda mi vida a colegio judío y a la <em>tnuá</em>. Viví un año en Israel durante mi <em>shnat hajshará</em>, y dediqué tres años de mi vida a devolverle a la <em>tnuá</em> todo lo que me dio, aportando a la comunidad desde adentro.',
     about_p3: 'En 2023 mis padres hicieron <em>aliá</em>. Yo tomé la difícil decisión de quedarme en Uruguay, en mi casa. Desde entonces vi de cerca una realidad que muchos atraviesan: en este tiempo pasaron más meses en guerra que en paz.',
     about_p4: 'Si lo que buscás es cercanía con empatía real, entendimiento y claridad, y no perder el tiempo explicando conceptos que solo podés entender viviéndolos — entonces este puede ser el espacio que estás buscando.',
-    about_p5: 'Mi enfoque está en ayudar a jóvenes y adultos a encontrar un espacio, por sobre todo, sano; donde la claridad y el equilibrio son la base del trabajo.',
+    about_p5: 'Mi enfoque está en ayudar a jóvenes y adultos a encontrar un espacio ante todo sano, donde la claridad y el equilibrio son la base del trabajo.',
 
     help_eyebrow: 'EN QUÉ TE PUEDO AYUDAR',
     help_title_a: 'Procesos que ',
@@ -40,7 +40,7 @@ export const translations = {
       ['Vínculos familiares y de pareja', 'Vínculos a distancia, conflictos por mudanza o nuevas rutinas, comunicación, lazos puestos a prueba.'],
       ['Crisis vitales y de sentido', 'Momentos de pregunta profunda sobre quién sos, qué hacés, hacia dónde vas.'],
       ['Procesos de cambio personal', 'Decisiones grandes, transiciones de vida, reinvención, búsqueda de claridad.'],
-      ['Otras áreas', 'Si lo tuyo no encaja exactamente acá, no te preocupes. Te invito a escribirme, conversamos, y vemos si puedo ayudarte o derivarte correctamente.'],
+      ['Otras áreas', 'Si lo que atravesás no aparece en esta lista, escribime igual. Conversamos y vemos juntos si puedo acompañarte, o cómo ayudarte a encontrar quien lo haga.'],
     ],
 
     approach_eyebrow: 'CÓMO TRABAJO',
@@ -58,10 +58,10 @@ export const translations = {
     first_title_a: 'Conozcámonos ',
     first_title_b: 'primero',
     first_title_c: '.',
-    first_headline: 'Si después de la primera consulta no querés continuar, el espacio va por mi cuenta.',
+    first_headline: 'Si después de la primera consulta no querés continuar, esa consulta va por mi cuenta.',
     first_body_a: 'Sé mejor que nadie que dar el primer paso cuesta, y mucho. Por eso, la primera consulta solo se cobra si decidís continuar y ',
     first_body_b: 'comenzar un proceso',
-    first_body_c: '. Si después de hablar conmigo sentís que este espacio no es para vos, no te preocupes, esa sesión no tiene costo — y espero que haya sido una conversación honesta que te ayudó a orientarte.',
+    first_body_c: '. Si después de hablar conmigo sentís que no es el momento, o que preferís pensarlo más, no hay problema — esa sesión no tiene costo, y espero que haya sido una conversación honesta que te ayudó a orientarte.',
     first_steps: [
       'Me mandás un mensaje y coordinamos día y hora — en el mismo día.',
       'Nos vemos por primera vez — conversamos y vemos juntos qué te trajo acá.',
@@ -77,7 +77,7 @@ export const translations = {
     contact_btn_mail: 'Enviame un mail',
 
     footer_credential: 'LICENCIADO EN PSICOLOGÍA',
-    footer_services: 'TERAPIA · ACOMPAÑAMIENTO PSICOLÓGICO · ATENCIÓN INMEDIATA',
+    footer_services: 'TERAPIA · ACOMPAÑAMIENTO PSICOLÓGICO · DISPONIBILIDAD FLEXIBLE',
     footer_meta: 'Atención online en español e inglés · desde cualquier parte del mundo',
     footer_bottom: '© 2026 Diego Jurfest · Todos los derechos reservados',
 
@@ -127,7 +127,7 @@ export const translations = {
       ['Family and couple bonds', 'Long-distance relationships, conflicts from relocation or new routines, communication, bonds under strain.'],
       ['Life and meaning crises', "Moments of deep questioning — who you are, what you do, where you're going."],
       ['Personal change processes', 'Big decisions, life transitions, reinvention, search for clarity.'],
-      ['Other areas', "If your situation doesn't fit exactly here, don't worry. Write to me, we'll talk, and we'll see if I can help you or refer you well."],
+      ['Other areas', "If what you're going through isn't on this list, write to me anyway. We'll talk and figure out together whether I can accompany you, or help you find someone who can."],
     ],
 
     approach_eyebrow: 'HOW I WORK',
@@ -145,10 +145,10 @@ export const translations = {
     first_title_a: "Let's ",
     first_title_b: 'meet first',
     first_title_c: '.',
-    first_headline: "If after the first session you don't want to continue, the session is on me.",
+    first_headline: "If after the first session you don't want to continue, that first consultation is on me.",
     first_body_a: "I know better than anyone that taking the first step is hard. That's why the first session is only charged if you decide to continue and ",
     first_body_b: 'begin a process',
-    first_body_c: ". If after talking with me you feel this space isn't for you, don't worry — that session has no cost, and I hope it was an honest conversation that helped you orient yourself.",
+    first_body_c: ". If after talking with me you feel it's not the right moment, or you'd like to think it over, no problem — that session has no cost, and I hope it was an honest conversation that helped you find your footing.",
     first_steps: [
       'You send me a message and we coordinate day and time — the same day.',
       'We meet for the first time — we talk and look together at what brought you here.',
@@ -164,7 +164,7 @@ export const translations = {
     contact_btn_mail: 'Send me an email',
 
     footer_credential: 'LICENSED PSYCHOLOGIST',
-    footer_services: 'THERAPY · CLINICAL SUPPORT · PROMPT AVAILABILITY',
+    footer_services: 'THERAPY · CLINICAL SUPPORT · FLEXIBLE AVAILABILITY',
     footer_meta: 'Online sessions in Spanish and English · available worldwide',
     footer_bottom: '© 2026 Diego Jurfest · All rights reserved',
 
@@ -214,7 +214,7 @@ export const translations = {
       ['קשרים משפחתיים וזוגיים', 'קשרים למרחק, קונפליקטים סביב מעבר או שגרה חדשה, תקשורת, קשרים שעומדים במבחן.'],
       ['משברי חיים ומשמעות', 'רגעים של שאלה עמוקה — מי אתה, מה אתה עושה, לאן אתה הולך.'],
       ['תהליכי שינוי אישי', 'החלטות גדולות, מעברי חיים, המצאה מחדש, חיפוש בהירות.'],
-      ['תחומים נוספים', 'אם המצב שלך לא משתלב כאן בדיוק, אל דאגה. אני מזמין אותך לכתוב לי, נדבר, ונראה אם אני יכול לעזור או להפנות אותך כראוי.'],
+      ['תחומים נוספים', 'אם מה שאתה עובר לא מופיע ברשימה הזו, כתוב לי בכל מקרה. נדבר ונראה יחד אם אני יכול ללוות אותך, או לעזור לך למצוא מי שיוכל.'],
     ],
 
     approach_eyebrow: 'איך אני עובד',
@@ -232,10 +232,10 @@ export const translations = {
     first_title_a: 'נכיר זה את זה ',
     first_title_b: 'קודם',
     first_title_c: '.',
-    first_headline: 'אם אחרי הפגישה הראשונה לא תרצה להמשיך, המרחב הזה על חשבוני.',
+    first_headline: 'אם אחרי הפגישה הראשונה לא תרצה להמשיך, הייעוץ הראשון הזה על חשבוני.',
     first_body_a: 'אני יודע יותר טוב מכולם שהצעד הראשון קשה, ומאוד. לכן, הפגישה הראשונה נגבית רק אם תחליט להמשיך ו',
     first_body_b: 'להתחיל תהליך',
-    first_body_c: '. אם אחרי שדיברנו תרגיש שהמרחב הזה לא בשבילך, אל דאגה, אין לפגישה הזאת עלות — ואני מקווה שזו הייתה שיחה כנה שעזרה לך לכוון את עצמך.',
+    first_body_c: '. אם אחרי שדיברנו תרגיש שזה לא הרגע הנכון, או שאתה מעדיף לחשוב על זה — אין בעיה, לפגישה הזאת אין עלות — ואני מקווה שזו הייתה שיחה כנה שעזרה לך למצוא את הכיוון.',
     first_steps: [
       'אתה שולח לי הודעה ואנחנו מתאמים יום ושעה — באותו יום.',
       'אנחנו נפגשים בפעם הראשונה — מדברים ובוחנים יחד מה הביא אותך לכאן.',
@@ -251,7 +251,7 @@ export const translations = {
     contact_btn_mail: 'שלח לי מייל',
 
     footer_credential: 'פסיכולוג מוסמך',
-    footer_services: 'טיפול · ליווי פסיכולוגי · זמינות מיידית',
+    footer_services: 'טיפול · ליווי פסיכולוגי · זמינות גמישה',
     footer_meta: 'פגישות אונליין בספרדית ואנגלית · זמין מכל מקום בעולם',
     footer_bottom: '© 2026 דייגו יורפסט · כל הזכויות שמורות',
 
