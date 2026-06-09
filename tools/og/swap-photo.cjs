@@ -71,5 +71,30 @@ for (let yy = 0; yy < MONO_SIZE; yy++) {
   }
 }
 
+// Reemplaza la insignia sage (abajo-izq) por la teal de la marca, para que el
+// logo del og coincida con el del sitio. Coordenadas fijas del badge en og-base
+// (detectadas con connected-components; og-base es un master que no cambia).
+const teal = PNG.sync.read(fs.readFileSync(path.join(ROOT, 'public/dj-monograma-teal.png')));
+const BADGE = { x0: 62, y0: 482, x1: 122, y1: 546 };
+{
+  const si = ((BADGE.y0 - 20) * W + BADGE.x0) * 4;        // muestreo del fondo crema
+  const cr = [base.data[si], base.data[si+1], base.data[si+2]];
+  for (let y = BADGE.y0-4; y <= BADGE.y1+4; y++) for (let x = BADGE.x0-4; x <= BADGE.x1+4; x++) {
+    if (x<0||y<0||x>=W||y>=H) continue; const i = (y*W+x)*4;
+    base.data[i]=cr[0]; base.data[i+1]=cr[1]; base.data[i+2]=cr[2];
+  }
+  const side = (BADGE.y1 - BADGE.y0 + 1) + 2;             // ~67, cubre el badge
+  const ts = side / teal.height;
+  const ox = Math.round((BADGE.x0 + BADGE.x1)/2 - side/2);
+  const oy = Math.round((BADGE.y0 + BADGE.y1)/2 - side/2);
+  for (let yy = 0; yy < Math.round(teal.height*ts); yy++) for (let xx = 0; xx < Math.round(teal.width*ts); xx++) {
+    const c = sample(teal, xx/ts, yy/ts), a = c[3]/255; if (a<=0) continue;
+    const tx = ox+xx, ty = oy+yy; if (tx<0||ty<0||tx>=W||ty>=H) continue;
+    const i = (ty*W+tx)*4;
+    base.data[i]=base.data[i]*(1-a)+c[0]*a; base.data[i+1]=base.data[i+1]*(1-a)+c[1]*a; base.data[i+2]=base.data[i+2]*(1-a)+c[2]*a;
+  }
+  console.log('insignia -> teal en', ox, oy, 'side', side);
+}
+
 fs.writeFileSync('/tmp/og-built.png', PNG.sync.write(base));
 console.log('OK — /tmp/og-built.png (build.sh lo convierte a public/og-image.jpg)');
