@@ -8,7 +8,7 @@ derecha por el retrato actual — NO se rediseña.
 
 ## Regenerar
 ```bash
-bash tools/og/build.sh   # → public/og-image.png
+bash tools/og/build.sh   # → public/og-image.jpg
 ```
 Toma `src/assets/diego-hero.jpg`, la compone sobre `og-base.png` con fundido suave y
 re-pone el monograma crema arriba a la derecha.

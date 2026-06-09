@@ -71,5 +71,5 @@ for (let yy = 0; yy < MONO_SIZE; yy++) {
   }
 }
 
-fs.writeFileSync(path.join(ROOT, 'public/og-image.png'), PNG.sync.write(base));
-console.log('OK — public/og-image.png: diseño original + foto nueva');
+fs.writeFileSync('/tmp/og-built.png', PNG.sync.write(base));
+console.log('OK — /tmp/og-built.png (build.sh lo convierte a public/og-image.jpg)');
