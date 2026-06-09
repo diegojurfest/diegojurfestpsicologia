@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  .og {
+    width: 1200px; height: 630px; position: relative; overflow: hidden;
+    background: linear-gradient(125deg, #0c6049 0%, #084036 60%, #063027 100%);
+    font-family: 'Inter', sans-serif;
+  }
+  .photo {
+    position: absolute; top: 0; right: 0; width: 47%; height: 100%;
+    background-image: url('file:///Users/loop/Desktop/diegojurfestpsicologia/src/assets/diego-hero.jpg');
+    background-size: cover; background-position: center 16%;
+  }
+  /* funde el borde izquierdo de la foto hacia el panel teal */
+  .photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, #084036 0%, rgba(8,64,54,0.55) 22%, rgba(8,64,54,0) 48%);
+  }
+  .content {
+    position: absolute; left: 70px; top: 0; height: 100%; width: 60%;
+    display: flex; flex-direction: column; justify-content: center; z-index: 2;
+  }
+  .eyebrow {
+    color: #9FE1CB; font-size: 17px; letter-spacing: 4px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before { content: ''; width: 38px; height: 2px; background: #9FE1CB; }
+  .name {
+    font-family: 'Cormorant Garamond', serif; font-size: 78px; font-weight: 600;
+    color: #FAF7F0; line-height: 1.0; margin-bottom: 18px; letter-spacing: -0.5px;
+  }
+  .name em { font-style: italic; color: #9FE1CB; }
+  .sub { color: #E1F5EE; font-size: 27px; font-weight: 400; margin-bottom: 24px; }
+  .desc { color: #9FE1CB; font-size: 18px; font-weight: 400; max-width: 540px; line-height: 1.55; opacity: 0.9; }
+  .badge { position: absolute; top: 44px; left: 70px; width: 56px; height: 56px; z-index: 3; }
+  .url { position: absolute; bottom: 40px; left: 70px; color: #9FE1CB; font-size: 16px; letter-spacing: 1.5px; opacity: 0.8; z-index: 3; }
+</style>
+</head>
+<body>
+  <div class="og">
+    <div class="photo"></div>
+    <img class="badge" src="file:///Users/loop/Desktop/diegojurfestpsicologia/public/dj-monograma-cream.png" alt="">
+    <div class="content">
+      <div class="eyebrow">Hablemos el mismo idioma</div>
+      <div class="name">Lic. Diego <em>Jurfest</em></div>
+      <div class="sub">Psicología online para jóvenes y adultos</div>
+      <div class="desc">Un espacio clínico confidencial, cercano y flexible — en tu idioma, donde sea que estés.</div>
+    </div>
+    <div class="url">diegojurfestpsicologia.com</div>
+  </div>
+</body>
+</html>
