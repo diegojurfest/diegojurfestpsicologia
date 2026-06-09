@@ -25,7 +25,7 @@ export const translations = {
     about_p2: 'También soy un joven judío uruguayo, hijo único, futbolero y apasionado por lo que hago. Hablo español, inglés, y cada día mejoro un poco más mi hebreo. Fui toda mi vida a colegio judío y a la <em>tnuá</em>. Viví un año en Israel durante mi <em>shnat hajshará</em>, y dediqué tres años de mi vida a devolverle a la <em>tnuá</em> todo lo que me dio, aportando a la comunidad desde adentro.',
     about_p3: 'En 2023 mis padres hicieron <em>aliá</em>. Yo tomé la difícil decisión de quedarme en Uruguay, en mi casa. Desde entonces vi de cerca una realidad que muchos atraviesan: en este tiempo pasaron más meses en guerra que en paz.',
     about_p4: 'Si lo que buscás es cercanía con empatía real, entendimiento y claridad, y no perder el tiempo explicando conceptos que solo podés entender viviéndolos — entonces este puede ser el espacio que estás buscando.',
-    about_p5: 'Mi enfoque está en ayudar a jóvenes y adultos a encontrar un espacio ante todo sano, donde la claridad y el equilibrio son la base del trabajo.',
+    about_p5: 'Mi enfoque está en ayudar a jóvenes y adultos a encontrar un espacio, por sobre todo, sano; donde la claridad y el equilibrio son la base del trabajo.',
 
     help_eyebrow: 'EN QUÉ TE PUEDO AYUDAR',
     help_title_a: 'Procesos que ',

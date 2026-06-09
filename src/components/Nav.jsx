@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Monogram from './Monogram'
 
 export default function Nav({ t, lang, setLang }) {
   const [open, setOpen] = useState(false)
@@ -15,8 +14,8 @@ export default function Nav({ t, lang, setLang }) {
   return (
     <nav className="nav">
       <a className="nav-brand" href="#top">
-        <Monogram className="nav-logo" />
-        <span>Lic. Diego Jurfest</span>
+        <img className="nav-logo" src="/dj-monograma-teal.png" alt="" aria-hidden="true" />
+        <span className="nav-brand-text"><span className="nav-brand-prefix">Lic. </span>Diego Jurfest</span>
       </a>
 
       <div className="nav-links">

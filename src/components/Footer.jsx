@@ -1,5 +1,3 @@
-import Monogram from './Monogram'
-
 export default function Footer({ t, waUrl, mailUrl }) {
   return (
     <footer>
@@ -10,13 +8,13 @@ export default function Footer({ t, waUrl, mailUrl }) {
         <div className="dot"></div>
         <div className="line"></div>
       </div>
-      <Monogram className="footer-logo" />
+      <img className="footer-logo" src="/dj-monograma-cream.png" alt="" aria-hidden="true" />
       <div className="footer-name">Diego Jurfest</div>
       <div className="footer-credential">{t.footer_credential}</div>
       <div className="footer-services">{t.footer_services}</div>
       <div className="footer-contact">
         <a href={waUrl} target="_blank" rel="noopener noreferrer" onClick={() => window.gtag?.('event', 'whatsapp_click', { location: 'footer' })}>WhatsApp · +598 93 383 251</a>
-        <span>·</span>
+        <span className="footer-contact-sep" aria-hidden="true"></span>
         <a href={mailUrl}>diegojurfest@gmail.com</a>
       </div>
       <div className="footer-meta">{t.footer_meta}</div>
