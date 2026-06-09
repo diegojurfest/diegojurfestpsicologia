@@ -1,4 +1,4 @@
-import diegoPhoto from '../assets/diego-retrato.jpg'
+import diegoPhoto from '../assets/diego-hero.jpg'
 
 export default function Hero({ t, waUrl }) {
   return (
