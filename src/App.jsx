@@ -7,6 +7,8 @@ import Help from './components/Help'
 import Approach from './components/Approach'
 import FirstSession from './components/FirstSession'
 import HomeRecursos from './components/HomeRecursos'
+import FAQ from './components/FAQ'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -34,8 +36,10 @@ export default function App() {
       <Approach t={t} />
       {showRecursos && <HomeRecursos />}
       <FirstSession t={t} />
+      {showRecursos && <FAQ />}
       <Contact t={t} waUrl={waUrl} mailUrl={mailUrl} />
       <Footer t={t} waUrl={waUrl} mailUrl={mailUrl} />
+      {showRecursos && <FloatingWhatsApp waUrl={waUrl} />}
     </>
   )
 }

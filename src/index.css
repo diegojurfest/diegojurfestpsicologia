@@ -810,3 +810,20 @@ footer::before {
 .recursos-all:hover { text-decoration: underline; }
 @media (max-width: 900px) { .recursos-home { padding: 72px 24px; } .recursos-cards { grid-template-columns: 1fr; gap: 14px; } }
 @media (max-width: 600px) { .recursos-home { padding: 56px 20px; } }
+
+/* ===== FAQ ===== */
+.faq { background: var(--cream); padding: 96px 40px; border-top: 1px solid rgba(15, 110, 86, 0.08); }
+.faq-list { max-width: 720px; margin: 38px 0 0; }
+.faq-item { border-bottom: 1px solid rgba(15, 110, 86, 0.12); }
+.faq-item summary { list-style: none; cursor: pointer; padding: 20px 0; font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; color: var(--teal); font-size: 26px; line-height: 1; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); flex-shrink: 0; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding: 0 0 22px; font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 640px; }
+@media (max-width: 900px) { .faq { padding: 64px 24px; } .faq-item summary { font-size: 18px; } }
+
+/* ===== Botón flotante WhatsApp ===== */
+.float-wa { position: fixed; bottom: 22px; right: 22px; width: 56px; height: 56px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(8, 64, 54, 0.28); z-index: 90; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; }
+.float-wa:hover { transform: scale(1.07); background: var(--teal-dark); box-shadow: 0 8px 26px rgba(8, 64, 54, 0.34); }
+.float-wa svg { width: 30px; height: 30px; fill: #fff; }
+@media (max-width: 600px) { .float-wa { bottom: 16px; right: 16px; width: 52px; height: 52px; } .float-wa svg { width: 28px; height: 28px; } }
