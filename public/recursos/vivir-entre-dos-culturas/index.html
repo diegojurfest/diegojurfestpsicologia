@@ -23,30 +23,31 @@
 <style>
 :root{--teal:#0F6E56;--teal-dark:#085041;--teal-soft:#9FE1CB;--cream:#FAF7F0;--paper:#FCFAF4;--ink:#1A2F26;--ink-soft:#4A5C53;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--sans);background:var(--paper);color:var(--ink-soft);line-height:1.7;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink-soft);line-height:1.62;-webkit-font-smoothing:antialiased}
 .top{position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,110,86,.08);padding:15px 24px;z-index:10}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--teal-dark);font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.5px}
 .brand img{display:block;border-radius:8px}
-.article{max-width:720px;margin:0 auto;padding:54px 24px 80px}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
-h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.12;color:var(--ink);letter-spacing:-.5px;margin-bottom:14px}
-.byline{font-size:14px;color:var(--ink-soft);opacity:.7;margin-bottom:34px}
-.hook{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,25px);line-height:1.5;color:var(--teal-dark);border-left:3px solid var(--teal-soft);padding:4px 0 4px 22px;margin:0 0 26px}
-.lead{font-size:18px;color:var(--ink);margin-bottom:34px}
-h2{font-family:var(--serif);font-weight:600;font-size:clamp(23px,3.4vw,28px);color:var(--ink);margin:38px 0 12px;letter-spacing:-.3px}
-p{font-size:16.5px;margin-bottom:16px}
-ul{margin:0 0 16px;list-style:none}
-li{font-size:16.5px;margin-bottom:11px;padding-left:22px;position:relative}
+.article{max-width:700px;margin:0 auto;padding:50px 24px 76px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,45px);line-height:1.12;color:var(--ink);letter-spacing:-.5px;margin-bottom:10px}
+.byline{font-size:14px;color:var(--ink-soft);opacity:.7;margin-bottom:24px}
+.hook{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,24px);line-height:1.46;color:var(--teal-dark);border-left:3px solid var(--teal-soft);padding:3px 0 3px 22px;margin:0 0 20px}
+.lead{font-size:18px;color:var(--ink);margin-bottom:22px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(22px,3.2vw,27px);color:var(--ink);margin:28px 0 8px;letter-spacing:-.3px}
+p{font-size:16.5px;margin-bottom:12px}
+ul{margin:2px 0 12px;list-style:none}
+li{font-size:16.5px;margin-bottom:8px;padding-left:22px;position:relative}
 li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--teal-soft)}
 strong{color:var(--ink);font-weight:600}
-.cta{display:inline-flex;align-items:center;gap:10px;margin:36px 0 6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 28px;border-radius:40px;transition:background .25s}
+em{font-style:italic}
+.cta{display:inline-flex;align-items:center;gap:10px;margin:30px 0 6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 28px;border-radius:40px;transition:background .25s}
 .cta:hover{background:var(--teal-dark)}
 .cta b{font-weight:600;transition:transform .25s}
 .cta:hover b{transform:translateX(4px)}
-.disclaimer{font-size:13px;opacity:.6;font-style:italic;margin-top:18px}
-.back{display:inline-block;margin-top:42px;color:var(--teal);text-decoration:none;font-size:14px;font-weight:500}
+.disclaimer{font-size:13px;opacity:.6;font-style:italic;margin-top:16px}
+.back{display:inline-block;margin-top:38px;color:var(--teal);text-decoration:none;font-size:14px;font-weight:500}
 .back:hover{text-decoration:underline}
-@media(max-width:600px){.article{padding:38px 20px 64px}.top{padding:14px 18px}}</style>
+@media(max-width:600px){.article{padding:36px 20px 60px}.top{padding:14px 18px}}</style>
 </head>
 <body>
 <header class="top">
@@ -55,19 +56,17 @@ strong{color:var(--ink);font-weight:600}
 <main class="article">
   <div class="eyebrow">Recursos</div>
   <h1>Vivir entre dos culturas: encontrar tu lugar</h1>
-  <div class="byline">Por el Lic. Diego Jurfest</div>
+  <div class="byline">Lic. Diego Jurfest</div>
   <blockquote class="hook">A veces sentís que en todos lados sos "el de afuera": el de allá cuando estás acá, el de acá cuando volvés allá. Como si tu lugar quedara siempre un poco más lejos.</blockquote>
   <p class="lead">Si creciste en una cultura y hacés tu vida en otra, esta sensación te va a sonar. Hablemos de ella.</p>
   <h2>No estás partido: estás hecho de las dos</h2>
-      <p>Tener dos idiomas, dos códigos, dos formas de ver el mundo no es una grieta: es una riqueza, aunque a veces incomode. No tenés que elegir una mitad —las dos te hacen.</p>
+      <p>Tener dos idiomas, dos códigos, dos formas de ver el mundo no es una grieta: es una riqueza, aunque a veces incomode. No tenés que elegir una mitad —las dos hacen a lo que sos hoy.</p>
   <h2>El cansancio de "traducirte" todo el tiempo</h2>
-      <p>Adaptarte a códigos que no son los tuyos —el humor, las formas, las costumbres— cansa. Es normal extrañar lugares donde no tenías que explicar nada. Reconocerlo ya alivia.</p>
+      <p>Adaptarte a códigos que no son los tuyos —el humor, las formas, las costumbres— puede ser cansador. Es normal extrañar lugares donde no tenías que explicar nada; reconocerlo alivia y es un gran primer paso.</p>
   <h2>Tu lugar no siempre es un país</h2>
-      <p>Muchas veces, "tu lugar" es la gente con la que no tenés que traducirte. Construir esos vínculos —y un espacio propio— pesa más que cualquier mapa, y no te obliga a soltar de dónde venís.</p>
-  <h2>Cuándo conviene hablarlo</h2>
-      <p>Si esa sensación de no encajar te pesa, te aísla o te deja bajón seguido, ponerla en palabras con alguien que entienda el cruce de culturas puede ordenar mucho.</p>
+      <p>Muchas veces, lo que entendés como "tu lugar" es la gente que tenés alrededor en este momento. Construir y desarrollar esos vínculos —además de un espacio propio— puede pesar más que un mapa, y no significa que vayas a olvidar de dónde venís.</p>
   <h2>Un espacio en tu idioma</h2>
-      <p>Acompaño a personas que viven este cruce, en tu idioma y sin que tengas que explicar de más. Si algo de esto te tocó, escribime y lo charlamos.</p>
+      <p>Existe una sensación muy común de "no encajar", y muchas veces pesa, te aísla o te incomoda pensarlo. Lograr ponerlo en palabras con alguien que entienda el cruce entre culturas puede ordenar mucho estas sensaciones, y hacerlo en tu idioma y sin tener que explicar de más facilita el proceso. Si te identificás con algo de esto, te invito a que lo conversemos con claridad.</p>
   <a class="cta" href="https://wa.me/59893383251?text=Hola%20Diego%2C%20me%20gustar%C3%ADa%20que%20agendemos%20una%20primera%20consulta." target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','whatsapp_click',{location:'recurso:vivir-entre-dos-culturas'})">Agendá tu primera consulta <b>→</b></a>
   <p class="disclaimer">Este contenido es informativo y no reemplaza una consulta profesional.</p>
   <a class="back" href="/">← Volver al inicio</a>

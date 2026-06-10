@@ -23,30 +23,31 @@
 <style>
 :root{--teal:#0F6E56;--teal-dark:#085041;--teal-soft:#9FE1CB;--cream:#FAF7F0;--paper:#FCFAF4;--ink:#1A2F26;--ink-soft:#4A5C53;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--sans);background:var(--paper);color:var(--ink-soft);line-height:1.7;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink-soft);line-height:1.62;-webkit-font-smoothing:antialiased}
 .top{position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,110,86,.08);padding:15px 24px;z-index:10}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--teal-dark);font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.5px}
 .brand img{display:block;border-radius:8px}
-.article{max-width:720px;margin:0 auto;padding:54px 24px 80px}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
-h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.12;color:var(--ink);letter-spacing:-.5px;margin-bottom:14px}
-.byline{font-size:14px;color:var(--ink-soft);opacity:.7;margin-bottom:34px}
-.hook{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,25px);line-height:1.5;color:var(--teal-dark);border-left:3px solid var(--teal-soft);padding:4px 0 4px 22px;margin:0 0 26px}
-.lead{font-size:18px;color:var(--ink);margin-bottom:34px}
-h2{font-family:var(--serif);font-weight:600;font-size:clamp(23px,3.4vw,28px);color:var(--ink);margin:38px 0 12px;letter-spacing:-.3px}
-p{font-size:16.5px;margin-bottom:16px}
-ul{margin:0 0 16px;list-style:none}
-li{font-size:16.5px;margin-bottom:11px;padding-left:22px;position:relative}
+.article{max-width:700px;margin:0 auto;padding:50px 24px 76px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,45px);line-height:1.12;color:var(--ink);letter-spacing:-.5px;margin-bottom:10px}
+.byline{font-size:14px;color:var(--ink-soft);opacity:.7;margin-bottom:24px}
+.hook{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,24px);line-height:1.46;color:var(--teal-dark);border-left:3px solid var(--teal-soft);padding:3px 0 3px 22px;margin:0 0 20px}
+.lead{font-size:18px;color:var(--ink);margin-bottom:22px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(22px,3.2vw,27px);color:var(--ink);margin:28px 0 8px;letter-spacing:-.3px}
+p{font-size:16.5px;margin-bottom:12px}
+ul{margin:2px 0 12px;list-style:none}
+li{font-size:16.5px;margin-bottom:8px;padding-left:22px;position:relative}
 li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--teal-soft)}
 strong{color:var(--ink);font-weight:600}
-.cta{display:inline-flex;align-items:center;gap:10px;margin:36px 0 6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 28px;border-radius:40px;transition:background .25s}
+em{font-style:italic}
+.cta{display:inline-flex;align-items:center;gap:10px;margin:30px 0 6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 28px;border-radius:40px;transition:background .25s}
 .cta:hover{background:var(--teal-dark)}
 .cta b{font-weight:600;transition:transform .25s}
 .cta:hover b{transform:translateX(4px)}
-.disclaimer{font-size:13px;opacity:.6;font-style:italic;margin-top:18px}
-.back{display:inline-block;margin-top:42px;color:var(--teal);text-decoration:none;font-size:14px;font-weight:500}
+.disclaimer{font-size:13px;opacity:.6;font-style:italic;margin-top:16px}
+.back{display:inline-block;margin-top:38px;color:var(--teal);text-decoration:none;font-size:14px;font-weight:500}
 .back:hover{text-decoration:underline}
-@media(max-width:600px){.article{padding:38px 20px 64px}.top{padding:14px 18px}}</style>
+@media(max-width:600px){.article{padding:36px 20px 60px}.top{padding:14px 18px}}</style>
 </head>
 <body>
 <header class="top">
@@ -55,7 +56,7 @@ strong{color:var(--ink);font-weight:600}
 <main class="article">
   <div class="eyebrow">Recursos</div>
   <h1>Cómo elegir psicólogo en español si vivís lejos de casa</h1>
-  <div class="byline">Por el Lic. Diego Jurfest</div>
+  <div class="byline">Lic. Diego Jurfest</div>
   <blockquote class="hook">Buscar ayuda ya cuesta. Buscarla en otro país, en otro idioma, con otra moneda y otro huso horario, puede sentirse como una pared. Pero no tiene por qué serlo.</blockquote>
   <p class="lead">Si estás lejos de donde creciste y sentís que necesitás un espacio para vos, esto es para ordenar la decisión sin que te pese tanto.</p>
   <h2>Por qué tu idioma importa (más de lo que parece)</h2>
@@ -63,7 +64,7 @@ strong{color:var(--ink);font-weight:600}
   <h2>¿La terapia online funciona igual?</h2>
       <p>Sí. Para la mayoría de los motivos de consulta, la terapia por videollamada <strong>puede ser tan efectiva como la presencial</strong>. Lo que sostiene un proceso no es el lugar: es el vínculo y el trabajo. Y eso se transmite a través de tu pantalla.</p>
   <h2>Qué mirar al elegir</h2>
-      <ul><li><strong>Formación de verdad.</strong> Que sea psicólogo/a con título, y que puedas corroborar su formación y experiencia.</li><li><strong>Que entienda tu contexto.</strong> No es lo mismo que alguien "sepa" de migración a que entienda lo que es dejar tu casa, tu idioma, tu gente.</li><li><strong>Encuadre claro.</strong> Disponibilidad, duración, confidencialidad. Las reglas claras dan tranquilidad.</li><li><strong>Que te sientas cómodo/a.</strong> Las primeras charlas también sirven para ver si "enganchás". Es válido buscar hasta encontrar.</li></ul>
+      <ul><li><strong>Formación verificable.</strong> Que sea psicólogo/a con un título que corrobore su formación y experiencia.</li><li><strong>Que entienda tu contexto.</strong> No es lo mismo que alguien "sepa" de migración a que entienda lo que es dejar tu casa, tu idioma, tu gente.</li><li><strong>Encuadre claro.</strong> Disponibilidad, duración, confidencialidad. Las reglas claras dan tranquilidad.</li><li><strong>Que te sientas cómodo/a.</strong> Las primeras charlas también sirven para ver si "enganchás". Es válido buscar hasta encontrar.</li></ul>
   <h2>Lo práctico no debería frenarte</h2>
       <p>Huso horario, moneda, medios de pago: son detalles que se resuelven. Un buen proceso se adapta a tu vida —tu zona horaria, tu rutina— y no al revés.</p>
   <h2>Dar el primer paso</h2>
