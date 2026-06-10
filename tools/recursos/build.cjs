@@ -8,7 +8,7 @@ const path = require('path');
 const PUB = path.resolve(__dirname, '../../public');
 const PREVIEW = true;
 const DATE_ISO = '2026-06-10';
-const DATE_HUMAN = 'junio de 2026';
+const DATE_HUMAN = 'Junio, 2026';
 const SITE = 'https://diegojurfestpsicologia.com';
 
 const WA = 'https://wa.me/59893383251?text=' +
@@ -24,7 +24,8 @@ const blocks = arr => arr.map(b =>
 
 // orden de aparición en el índice (los de más enganche arriba)
 const ORDER = [
-  'necesito-ir-al-psicologo', 'dormir-mejor-cuando-cuesta-apagar-la-cabeza',
+  'necesito-ir-al-psicologo', 'mitos-que-conviene-dejar-atras',
+  'dormir-mejor-cuando-cuesta-apagar-la-cabeza',
   'empezar-terapia-por-primera-vez', 'como-es-una-sesion-de-terapia-online',
   'elegir-psicologo-en-espanol-viviendo-lejos', 'ansiedad-cuando-la-guerra-esta-cerca',
   'hacer-alia-desafio-emocional', 'vivir-entre-dos-culturas',
@@ -34,7 +35,8 @@ const RELATED = {
   'ansiedad-cuando-la-guerra-esta-cerca': ['dormir-mejor-cuando-cuesta-apagar-la-cabeza', 'necesito-ir-al-psicologo'],
   'elegir-psicologo-en-espanol-viviendo-lejos': ['como-es-una-sesion-de-terapia-online', 'empezar-terapia-por-primera-vez'],
   'hacer-alia-desafio-emocional': ['vivir-entre-dos-culturas', 'elegir-psicologo-en-espanol-viviendo-lejos'],
-  'necesito-ir-al-psicologo': ['empezar-terapia-por-primera-vez', 'como-es-una-sesion-de-terapia-online'],
+  'necesito-ir-al-psicologo': ['mitos-que-conviene-dejar-atras', 'empezar-terapia-por-primera-vez'],
+  'mitos-que-conviene-dejar-atras': ['necesito-ir-al-psicologo', 'como-es-una-sesion-de-terapia-online'],
   'empezar-terapia-por-primera-vez': ['como-es-una-sesion-de-terapia-online', 'necesito-ir-al-psicologo'],
   'como-es-una-sesion-de-terapia-online': ['empezar-terapia-por-primera-vez', 'elegir-psicologo-en-espanol-viviendo-lejos'],
   'dormir-mejor-cuando-cuesta-apagar-la-cabeza': ['ansiedad-cuando-la-guerra-esta-cerca', 'necesito-ir-al-psicologo'],
@@ -44,7 +46,7 @@ const RELATED = {
 const wordsOf = a => (a.hook + ' ' + a.lead + ' ' +
   a.sections.map(s => s.h + ' ' + s.body.map(b => b.ul ? b.ul.join(' ') : b.p).join(' ')).join(' '))
   .split(/\s+/).length;
-const readMin = a => Math.max(2, Math.round(wordsOf(a) / 200));
+const readMin = a => Math.max(2, Math.ceil(wordsOf(a) / 170));
 
 const CSS = `
 :root{--teal:#0F6E56;--teal-dark:#085041;--teal-soft:#9FE1CB;--teal-faint:#E1F5EE;--cream:#FAF7F0;--paper:#FCFAF4;--ink:#1A2F26;--ink-soft:#4A5C53;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
@@ -64,7 +66,7 @@ p{font-size:16.5px;margin-bottom:12px}
 ul{margin:2px 0 12px;list-style:none}
 li{font-size:16.5px;margin-bottom:8px;padding-left:22px;position:relative}
 li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--teal-soft)}
-strong{color:var(--ink);font-weight:600}em{font-style:italic}
+strong{color:var(--ink);font-weight:600}em{font-style:italic}.hl{color:var(--teal)}
 .cta{display:inline-flex;align-items:center;gap:10px;margin:30px 0 6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 28px;border-radius:40px;transition:background .25s}
 .cta:hover{background:var(--teal-dark)}
 .cta b{font-weight:600;transition:transform .25s}.cta:hover b{transform:translateX(4px)}
@@ -160,8 +162,8 @@ ${head('Recursos | Lic. Diego Jurfest, Psicólogo', 'Textos breves para pensar, 
 ${topbar}
 <main class="wrap">
   <div class="eyebrow">Recursos</div>
-  <h1>Un espacio para pensar y entenderte mejor</h1>
-  <p class="intro">Textos breves sobre lo que muchos atraviesan —ansiedad, adaptación, vínculos, empezar terapia— escritos para acompañarte, estés donde estés.</p>
+  <h1>Un espacio para tomarse el momento de hacer algo muy simple y complejo a la vez: <em class="hl">Pensar.</em></h1>
+  <p class="intro">Textos rápidos sobre lo que muchos atravesamos —ansiedad, adaptación, vínculos, empezar terapia— pensados y escritos para acompañarte y reflexionar unos minutos, estés donde estés.</p>
   <div class="grid">
       ${cards}
   </div>
@@ -207,6 +209,7 @@ const articles = [
         '**Que entienda tu contexto.** No es lo mismo que alguien "sepa" de migración a que entienda lo que es dejar tu casa, tu idioma, tu gente.',
         '**Encuadre claro.** Disponibilidad, duración, confidencialidad. Las reglas claras dan tranquilidad.',
         '**Que te sientas cómodo/a.** Las primeras charlas también sirven para ver si "enganchás". Es válido buscar hasta encontrar.' ] }] },
+      { h: 'Preguntá lo que necesites antes de empezar', body: [{ p: 'Es válido preguntar cómo trabaja, cuánto dura una sesión, cómo maneja la confidencialidad o qué pasa si tenés que faltar. Un buen profesional responde con claridad y sin que te sientas incómodo/a; esas respuestas también te ayudan a decidir.' }] },
       { h: 'Lo práctico no debería frenarte', body: [{ p: 'Huso horario, moneda, medios de pago: son detalles que se resuelven. Un buen proceso se adapta a tu vida —tu zona horaria, tu rutina— y no al revés.' }] },
       { h: 'Dar el primer paso', body: [{ p: 'Si llegaste hasta acá, ya hiciste lo más difícil: registrar que querés un espacio. Si te hace sentido, **escribime y coordinamos una primera charla**. Sin compromiso: la idea es conocernos y ver si puedo serte útil.' }] },
     ],
@@ -292,6 +295,10 @@ const articles = [
         '**Bajá las pantallas un rato antes.** La luz, el celular y el scroll mantienen el cerebro en "alerta". Dale una transición más tranquila.',
         '**No pelees con el "me cuesta dormirme".** Si no viene el sueño, no te quedes luchando: levantate un momento, hacé algo calmo y breve, y volvé cuando aflojes. Pelear contigo mismo solo lo empeora.',
         '**Cuidá los horarios.** Acostarte y levantarte a horas parecidas le ordena el reloj al cuerpo, y consecuentemente a la cabeza. Cumplir con una rutina es programarte para un mejor funcionamiento.' ] }] },
+      { h: 'Lo que no ayuda (aunque lo parezca)', body: [{ ul: [
+        '**Mirar la hora.** Calcular "cuántas horas me quedan" enciende la ansiedad. Si podés, girá el reloj.',
+        '**La cafeína de la tarde.** Café, mate o energizantes después del mediodía pueden seguir dando vueltas a la noche.',
+        '**Las siestas largas.** Una siesta corta no molesta; una de horas le desordena el sueño a la noche.' ] }] },
       { h: 'Cuándo puede haber "algo más"', body: [{ p: 'Si te cuesta dormir por muchas noches seguidas, de día te sentís más agotado o más inquieto, o sentís que tus horarios están desconfigurados, muchas veces el sueño es la punta de algo más (estrés, una preocupación sostenida). Abordar eso con mayor profundidad suele ayudar a mejorar el descanso, y quizás lo que anotaste antes de dormir se ordene mejor hablándolo con alguien.' }] },
     ],
   },
@@ -307,6 +314,24 @@ const articles = [
       { h: 'El cansancio de "traducirte" todo el tiempo', body: [{ p: 'Adaptarte a códigos que no son los tuyos —el humor, las formas, las costumbres— puede ser cansador. Es normal extrañar lugares donde no tenías que explicar nada; reconocerlo alivia y es un gran primer paso.' }] },
       { h: 'Tu lugar no siempre es un país', body: [{ p: 'Muchas veces, lo que entendés como "tu lugar" es la gente que tenés alrededor en este momento. Construir y desarrollar esos vínculos —además de un espacio propio— puede pesar más que un mapa, y no significa que vayas a olvidar de dónde venís.' }] },
       { h: 'Un espacio en tu idioma', body: [{ p: 'Existe una sensación muy común de "no encajar", y muchas veces pesa, te aísla o te incomoda pensarlo. Lograr ponerlo en palabras con alguien que entienda el cruce entre culturas puede ordenar mucho estas sensaciones, y hacerlo en tu idioma y sin tener que explicar de más facilita el proceso. Si te identificás con algo de esto, te invito a que lo conversemos con claridad.' }] },
+    ],
+  },
+  {
+    slug: 'mitos-que-conviene-dejar-atras',
+    title: 'Mitos que (te) conviene dejar atrás',
+    metaTitle: 'Mitos sobre la terapia y la salud mental que conviene dejar atrás | Lic. Diego Jurfest',
+    metaDesc: 'Ideas muy instaladas sobre la terapia, la ansiedad y el bienestar que, sin darte cuenta, te están frenando. Las desarmamos una por una.',
+    hook: 'Crecimos escuchando ciertas frases tantas veces que dejamos de cuestionarlas: "a tu edad ya tendrías que…", "eso es de débiles", "ya se te va a pasar". Y algunas de esas ideas, repetidas sin pensar, terminan pesando más que el problema en sí.',
+    lead: 'Acá van algunos mitos muy instalados sobre la terapia, la ansiedad y el bienestar — y por qué quizás convenga soltarlos.',
+    sections: [
+      { h: '"Ir al psicólogo es para cuando estás muy mal"', body: [{ p: 'La terapia no es solo para las crisis. Sirve para entenderte, tomar decisiones difíciles, frenar a tiempo, ordenar una etapa confusa o simplemente tener un espacio que sea solo tuyo una vez por semana. Pensarla únicamente como un recurso de emergencia es lo que hace que muchos lleguen tarde, cuando algo que se podía trabajar en unas semanas ya se volvió una bola más grande. Cuanto antes, casi siempre, más simple.' }] },
+      { h: '"Pedir ayuda es de débiles"', body: [{ p: 'Es exactamente al revés. Registrar que algo te pasa, ponerle nombre y animarte a buscar apoyo es de las cosas más maduras —y más valientes— que podés hacer. Lo que de verdad cuesta no es pedir ayuda: es venir aguantando todo en silencio, de más, convencido de que "tendrías que poder solo". Nadie espera que te operes a vos mismo; con lo emocional, a veces, pasa lo mismo.' }] },
+      { h: '"A mi edad ya tendría que tener todo resuelto"', body: [{ p: 'La idea de que a los 20 o a los 30 hay que tener el trabajo, la pareja y el rumbo claros está tan instalada como vacía. Casi nadie la cumple; es una etapa de construcción, de probar, equivocarse y volver a empezar. El problema no es no tenerlo resuelto: es la vara imaginaria con la que te comparás, que no te ordena nada y solo te agrega culpa por no estar donde "deberías".' }] },
+      { h: '"La ansiedad se va sola si la ignorás"', body: [{ p: 'Ojalá fuera así. Pero ignorar lo que sentís suele agrandarlo, no achicarlo: lo que no se mira tiende a volver, a veces más fuerte. La ansiedad no se "aguanta" a fuerza de voluntad; se entiende, se le baja el volumen con herramientas concretas y se trabaja lo que la enciende. Mirarla de frente, con calma y sin pelearte con ella, es lo que de verdad la afloja.' }] },
+      { h: '"La terapia online no funciona de verdad"', body: [{ p: 'Es una de las dudas más comunes, y la evidencia es bastante clara: para la mayoría de los motivos de consulta, la videollamada puede ser tan efectiva como el consultorio. Lo que sostiene un proceso no es el sillón, la sala ni los adornos: es el vínculo y el trabajo entre dos personas. Y eso viaja perfecto por una pantalla, con la ventaja extra de hacerlo desde tu lugar seguro, sin traslados ni esperas.' }] },
+      { h: '"Si lo hablo con amigos, no necesito terapia"', body: [{ p: 'Los amigos son oro, y hablar siempre ayuda. Pero un espacio profesional es otra cosa: ahí no tenés que cuidar al otro, ni devolver el favor, ni preocuparte por cómo cae lo que decís. Es un lugar pensado para vos, sin juicio, con alguien formado para ayudarte a entender y trabajar de fondo lo que traés. No compiten entre sí: se complementan.' }] },
+      { h: '"Compararme en redes no me afecta"', body: [{ p: 'Pasamos horas frente a vidas editadas —donde se muestra solo el mejor ángulo— y creemos que a nosotros no nos toca. Pero la comparación constante con esa postal va erosionando el ánimo de a poco, casi sin que lo notes: aparece la sensación de estar siempre un paso atrás, de que a todos les va mejor. Darte cuenta de que estás comparando tu detrás de escena con la película editada de otro ya cambia cómo lo mirás.' }] },
+      { h: 'Soltar estos mitos ya es un movimiento', body: [{ p: 'Cuestionar lo que dabas por hecho —sobre vos, sobre pedir ayuda, sobre "cómo deberías estar" a esta altura— es, en sí mismo, el primer paso. No hace falta creerte todo lo de acá de golpe; alcanza con abrir una rendija de duda. Y si alguno de estos mitos te resonó más de la cuenta, quizás valga la pena darle una vuelta más, esta vez acompañado.' }] },
     ],
   },
 ];
