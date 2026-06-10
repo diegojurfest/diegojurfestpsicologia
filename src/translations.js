@@ -51,7 +51,7 @@ export const translations = {
     approach_items: [
       ['Online — privacidad real', 'Las sesiones son por Google Meet en una sala configurada para máxima privacidad: un link único, sin grabaciones y sin registros. Si preferís usar videollamada por WhatsApp no hay problema, escribime y conversamos.'],
       ['En tu idioma, en tu hora', 'Las sesiones son en español o inglés, con disponibilidad amplia que respeta tu zona horaria. Estés en Israel, Europa, América o donde sea — siempre coordinamos un horario que a vos te sirva.'],
-      ['Pagá en tu moneda local', 'Esto nunca va a ser un problema. Podés pagar con medios de pago locales de Israel y otros métodos internacionales, en la moneda de tu preferencia y sin complicaciones de conversión.'],
+      ['Pagá en tu moneda local', 'Esto nunca va a ser un problema. Podés pagar con medios de pago locales de Israel, Argentina, Uruguay —entre otros— y otros métodos internacionales alternativos; siempre en la moneda que te quede cómoda, sin complicaciones de accesibilidad ni de conversión.'],
     ],
 
     first_eyebrow: 'PRIMERA CONSULTA',
@@ -138,7 +138,7 @@ export const translations = {
     approach_items: [
       ['Online — real privacy', 'Sessions are via Google Meet in a room configured for maximum privacy: a unique link, no recordings, no records. If you prefer to use WhatsApp video call instead, no problem — write to me and we figure it out.'],
       ['In your language, on your time', "Sessions are in Spanish or English, with broad availability that respects your time zone. Whether you're in Israel, Europe, the Americas or anywhere else — we'll always find a time that works for you."],
-      ['Pay in your local currency', 'This will never be a problem. You can pay with local Israeli payment methods or international methods, in whichever currency you prefer, without conversion hassles.'],
+      ['Pay in your local currency', 'This will never be a problem. You can pay with local payment methods from Israel, Argentina, Uruguay —among others— and alternative international methods; always in whatever currency suits you, with no accessibility or conversion hassles.'],
     ],
 
     first_eyebrow: 'FIRST SESSION',

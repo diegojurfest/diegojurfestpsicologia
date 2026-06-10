@@ -36,8 +36,8 @@ export default function App() {
       <Approach t={t} />
       {showRecursos && <HomeRecursos />}
       <FirstSession t={t} />
-      {showRecursos && <FAQ />}
       <Contact t={t} waUrl={waUrl} mailUrl={mailUrl} />
+      {showRecursos && <FAQ />}
       <Footer t={t} waUrl={waUrl} mailUrl={mailUrl} />
       {showRecursos && <FloatingWhatsApp waUrl={waUrl} />}
     </>
