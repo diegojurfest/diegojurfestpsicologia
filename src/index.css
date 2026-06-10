@@ -796,3 +796,17 @@ footer::before {
 }
 
 [dir="rtl"] .hero-name { letter-spacing: 0; }
+
+/* ===== Recursos (bloque home) ===== */
+.recursos-home { background: var(--paper); padding: 96px 40px; }
+.recursos-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.recursos-card { display: flex; flex-direction: column; text-decoration: none; background: var(--cream); border: 1px solid rgba(15, 110, 86, 0.1); border-radius: 16px; padding: 24px; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease; }
+.recursos-card:hover { transform: translateY(-4px); border-color: var(--teal-soft); }
+.recursos-card-meta { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); opacity: 0.8; margin-bottom: 10px; }
+.recursos-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1.18; margin-bottom: 8px; }
+.recursos-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px; flex: 1; }
+.recursos-card-go { font-size: 14px; font-weight: 600; color: var(--teal); }
+.recursos-all { display: inline-block; margin-top: 36px; color: var(--teal); font-weight: 600; text-decoration: none; font-size: 15px; }
+.recursos-all:hover { text-decoration: underline; }
+@media (max-width: 900px) { .recursos-home { padding: 72px 24px; } .recursos-cards { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 600px) { .recursos-home { padding: 56px 20px; } }

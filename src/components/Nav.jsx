@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Nav({ t, lang, setLang }) {
+export default function Nav({ t, lang, setLang, showRecursos }) {
   const [open, setOpen] = useState(false)
 
   const links = [
@@ -8,6 +8,7 @@ export default function Nav({ t, lang, setLang }) {
     ['#help', t.nav_help],
     ['#approach', t.nav_approach],
     ['#first-session', t.nav_first],
+    ...(showRecursos ? [['/recursos/', 'Recursos']] : []),
     ['#contact', t.nav_contact],
   ]
 

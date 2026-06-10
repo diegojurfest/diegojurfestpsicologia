@@ -1,12 +1,15 @@
-// Genera las páginas de la sección Recursos como HTML estático, con la marca del
-// sitio. Uso: node tools/recursos/build.cjs   (salida en /public/recursos/<slug>/)
+// Genera la sección Recursos (índice + 8 artículos) como HTML estático con la marca.
+// Uso: node tools/recursos/build.cjs   (salida en /public/recursos/)
 //
-// PREVIEW=true -> robots noindex (mientras Diego revisa). Al lanzar de verdad,
-// poné PREVIEW=false, regenerá, y agregá las URLs al sitemap + link en el menú.
+// PREVIEW=true -> robots noindex (mientras se revisa). Al lanzar de verdad,
+// poné PREVIEW=false, regenerá, y agregá las URLs al sitemap.
 const fs = require('fs');
 const path = require('path');
 const PUB = path.resolve(__dirname, '../../public');
 const PREVIEW = true;
+const DATE_ISO = '2026-06-10';
+const DATE_HUMAN = 'junio de 2026';
+const SITE = 'https://diegojurfestpsicologia.com';
 
 const WA = 'https://wa.me/59893383251?text=' +
   encodeURIComponent('Hola Diego, me gustaría que agendemos una primera consulta.');
@@ -19,14 +22,38 @@ const blocks = arr => arr.map(b =>
   b.ul ? `<ul>${b.ul.map(li => `<li>${fmt(li)}</li>`).join('')}</ul>`
        : `<p>${fmt(b.p)}</p>`).join('\n      ');
 
+// orden de aparición en el índice (los de más enganche arriba)
+const ORDER = [
+  'necesito-ir-al-psicologo', 'dormir-mejor-cuando-cuesta-apagar-la-cabeza',
+  'empezar-terapia-por-primera-vez', 'como-es-una-sesion-de-terapia-online',
+  'elegir-psicologo-en-espanol-viviendo-lejos', 'ansiedad-cuando-la-guerra-esta-cerca',
+  'hacer-alia-desafio-emocional', 'vivir-entre-dos-culturas',
+];
+// "Seguí leyendo" — 2 artículos relacionados por cada uno
+const RELATED = {
+  'ansiedad-cuando-la-guerra-esta-cerca': ['dormir-mejor-cuando-cuesta-apagar-la-cabeza', 'necesito-ir-al-psicologo'],
+  'elegir-psicologo-en-espanol-viviendo-lejos': ['como-es-una-sesion-de-terapia-online', 'empezar-terapia-por-primera-vez'],
+  'hacer-alia-desafio-emocional': ['vivir-entre-dos-culturas', 'elegir-psicologo-en-espanol-viviendo-lejos'],
+  'necesito-ir-al-psicologo': ['empezar-terapia-por-primera-vez', 'como-es-una-sesion-de-terapia-online'],
+  'empezar-terapia-por-primera-vez': ['como-es-una-sesion-de-terapia-online', 'necesito-ir-al-psicologo'],
+  'como-es-una-sesion-de-terapia-online': ['empezar-terapia-por-primera-vez', 'elegir-psicologo-en-espanol-viviendo-lejos'],
+  'dormir-mejor-cuando-cuesta-apagar-la-cabeza': ['ansiedad-cuando-la-guerra-esta-cerca', 'necesito-ir-al-psicologo'],
+  'vivir-entre-dos-culturas': ['hacer-alia-desafio-emocional', 'elegir-psicologo-en-espanol-viviendo-lejos'],
+};
+
+const wordsOf = a => (a.hook + ' ' + a.lead + ' ' +
+  a.sections.map(s => s.h + ' ' + s.body.map(b => b.ul ? b.ul.join(' ') : b.p).join(' ')).join(' '))
+  .split(/\s+/).length;
+const readMin = a => Math.max(2, Math.round(wordsOf(a) / 200));
+
 const CSS = `
-:root{--teal:#0F6E56;--teal-dark:#085041;--teal-soft:#9FE1CB;--cream:#FAF7F0;--paper:#FCFAF4;--ink:#1A2F26;--ink-soft:#4A5C53;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+:root{--teal:#0F6E56;--teal-dark:#085041;--teal-soft:#9FE1CB;--teal-faint:#E1F5EE;--cream:#FAF7F0;--paper:#FCFAF4;--ink:#1A2F26;--ink-soft:#4A5C53;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink-soft);line-height:1.62;-webkit-font-smoothing:antialiased}
 .top{position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,110,86,.08);padding:15px 24px;z-index:10}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--teal-dark);font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.5px}
 .brand img{display:block;border-radius:8px}
-.article{max-width:700px;margin:0 auto;padding:50px 24px 76px}
+.wrap{max-width:700px;margin:0 auto;padding:50px 24px 76px}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
 h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,45px);line-height:1.12;color:var(--ink);letter-spacing:-.5px;margin-bottom:10px}
 .byline{font-size:14px;color:var(--ink-soft);opacity:.7;margin-bottom:24px}
@@ -37,31 +64,41 @@ p{font-size:16.5px;margin-bottom:12px}
 ul{margin:2px 0 12px;list-style:none}
 li{font-size:16.5px;margin-bottom:8px;padding-left:22px;position:relative}
 li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--teal-soft)}
-strong{color:var(--ink);font-weight:600}
-em{font-style:italic}
+strong{color:var(--ink);font-weight:600}em{font-style:italic}
 .cta{display:inline-flex;align-items:center;gap:10px;margin:30px 0 6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 28px;border-radius:40px;transition:background .25s}
 .cta:hover{background:var(--teal-dark)}
-.cta b{font-weight:600;transition:transform .25s}
-.cta:hover b{transform:translateX(4px)}
+.cta b{font-weight:600;transition:transform .25s}.cta:hover b{transform:translateX(4px)}
 .disclaimer{font-size:13px;opacity:.6;font-style:italic;margin-top:16px}
-.back{display:inline-block;margin-top:38px;color:var(--teal);text-decoration:none;font-size:14px;font-weight:500}
-.back:hover{text-decoration:underline}
-@media(max-width:600px){.article{padding:36px 20px 60px}.top{padding:14px 18px}}`;
+.more{margin-top:46px;border-top:1px solid rgba(15,110,86,.12);padding-top:24px}
+.more-t{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rcard{display:block;text-decoration:none;background:var(--cream);border:1px solid rgba(15,110,86,.1);border-radius:14px;padding:16px 18px;transition:transform .25s,border-color .25s}
+.rcard:hover{transform:translateY(-3px);border-color:var(--teal-soft)}
+.rcard h3{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:5px}
+.rcard span{font-size:13px;color:var(--teal)}
+.back{display:inline-block;margin-top:34px;color:var(--teal);text-decoration:none;font-size:14px;font-weight:500}.back:hover{text-decoration:underline}
+/* índice */
+.intro{font-size:18px;color:var(--ink-soft);margin-bottom:34px;max-width:600px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{display:flex;flex-direction:column;text-decoration:none;background:var(--cream);border:1px solid rgba(15,110,86,.1);border-radius:16px;padding:24px;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--teal-soft)}
+.card-meta{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);opacity:.8;margin-bottom:10px}
+.card h2{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);line-height:1.16;margin:0 0 9px}
+.card p{font-size:15px;color:var(--ink-soft);margin:0 0 14px;flex:1}
+.card .read{font-size:14px;font-weight:600;color:var(--teal)}
+@media(max-width:600px){.wrap{padding:36px 20px 60px}.top{padding:14px 18px}.grid,.more-grid{grid-template-columns:1fr}}`;
 
-const page = a => `<!doctype html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
+const head = (title, desc, url, extra = '') => `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${esc(a.metaTitle)}</title>
-<meta name="description" content="${esc(a.metaDesc)}">
-<link rel="canonical" href="https://diegojurfestpsicologia.com/recursos/${a.slug}/">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${url}">
 <meta name="robots" content="${PREVIEW ? 'noindex,follow' : 'index,follow'}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="${esc(a.title)}">
-<meta property="og:description" content="${esc(a.metaDesc)}">
-<meta property="og:url" content="https://diegojurfestpsicologia.com/recursos/${a.slug}/">
-<meta property="og:image" content="https://diegojurfestpsicologia.com/og-image.jpg">
+<meta property="og:type" content="${extra ? 'article' : 'website'}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${SITE}/og-image.jpg">
 <meta property="og:site_name" content="Diego Jurfest Psicología">
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -69,26 +106,71 @@ const page = a => `<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB1GSBSK9W"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RB1GSBSK9W');</script>
-<style>${CSS}</style>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RB1GSBSK9W');</script>${extra}
+<style>${CSS}</style>`;
+
+const topbar = `<header class="top"><a class="brand" href="/"><img src="/dj-monograma-teal.png" alt="" width="34" height="34"><span>Lic. Diego Jurfest</span></a></header>`;
+
+function articlePage(a, bySlug) {
+  const url = `${SITE}/recursos/${a.slug}/`;
+  const rt = readMin(a);
+  const schema = '\n<script type="application/ld+json">' + JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Article', headline: a.title,
+    description: a.metaDesc, author: { '@type': 'Person', name: 'Lic. Diego Jurfest' },
+    publisher: { '@type': 'Person', name: 'Lic. Diego Jurfest' },
+    datePublished: DATE_ISO, dateModified: DATE_ISO, image: `${SITE}/og-image.jpg`,
+    inLanguage: 'es', mainEntityOfPage: url,
+  }) + '</script>';
+  const rel = (RELATED[a.slug] || []).map(s => bySlug[s]).filter(Boolean);
+  const more = rel.length ? `\n  <div class="more"><div class="more-t">Seguí leyendo</div><div class="more-grid">${
+    rel.map(r => `<a class="rcard" href="/recursos/${r.slug}/"><h3>${esc(r.title)}</h3><span>Leer →</span></a>`).join('')
+  }</div></div>` : '';
+  return `<!doctype html>
+<html lang="es">
+<head>
+${head(a.metaTitle, a.metaDesc, url, schema)}
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="/"><img src="/dj-monograma-teal.png" alt="" width="34" height="34"><span>Lic. Diego Jurfest</span></a>
-</header>
-<main class="article">
+${topbar}
+<main class="wrap">
   <div class="eyebrow">Recursos</div>
   <h1>${esc(a.title)}</h1>
-  <div class="byline">Lic. Diego Jurfest</div>
+  <div class="byline">Lic. Diego Jurfest · ${rt} min de lectura · ${DATE_HUMAN}</div>
   <blockquote class="hook">${fmt(a.hook)}</blockquote>
   <p class="lead">${fmt(a.lead)}</p>
   ${a.sections.map(s => `<h2>${esc(s.h)}</h2>\n      ${blocks(s.body)}`).join('\n  ')}
   <a class="cta" href="${WA}" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','whatsapp_click',{location:'recurso:${a.slug}'})">Agendá tu primera consulta <b>→</b></a>
-  <p class="disclaimer">Este contenido es informativo y no reemplaza una consulta profesional.</p>
-  <a class="back" href="/">← Volver al inicio</a>
+  <p class="disclaimer">Este contenido es informativo y no reemplaza una consulta profesional.</p>${more}
+  <a class="back" href="/recursos/">← Volver a Recursos</a>
 </main>
 </body>
 </html>`;
+}
+
+function indexPage(bySlug) {
+  const url = `${SITE}/recursos/`;
+  const cards = ORDER.map(s => bySlug[s]).filter(Boolean).map(a =>
+    `<a class="card" href="/recursos/${a.slug}/"><div class="card-meta">${readMin(a)} min de lectura</div><h2>${esc(a.title)}</h2><p>${esc(a.metaDesc)}</p><span class="read">Leer →</span></a>`).join('\n      ');
+  return `<!doctype html>
+<html lang="es">
+<head>
+${head('Recursos | Lic. Diego Jurfest, Psicólogo', 'Textos breves para pensar, entender y encontrar herramientas: ansiedad, adaptación, vínculos, empezar terapia y más. Escritos por el Lic. Diego Jurfest.', url)}
+</head>
+<body>
+${topbar}
+<main class="wrap">
+  <div class="eyebrow">Recursos</div>
+  <h1>Un espacio para pensar y entenderte mejor</h1>
+  <p class="intro">Textos breves sobre lo que muchos atraviesan —ansiedad, adaptación, vínculos, empezar terapia— escritos para acompañarte, estés donde estés.</p>
+  <div class="grid">
+      ${cards}
+  </div>
+  <a class="cta" href="${WA}" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','whatsapp_click',{location:'recursos-index'})">Agendá tu primera consulta <b>→</b></a>
+  <br><a class="back" href="/">← Volver al inicio</a>
+</main>
+</body>
+</html>`;
+}
 
 const articles = [
   {
@@ -229,11 +311,13 @@ const articles = [
   },
 ];
 
+const bySlug = Object.fromEntries(articles.map(a => [a.slug, a]));
 let n = 0;
 for (const a of articles) {
   const dir = path.join(PUB, 'recursos', a.slug);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), page(a));
+  fs.writeFileSync(path.join(dir, 'index.html'), articlePage(a, bySlug));
   n++;
 }
-console.log(`OK — ${n} páginas en /public/recursos/  (PREVIEW=${PREVIEW} -> robots ${PREVIEW ? 'noindex' : 'index'})`);
+fs.writeFileSync(path.join(PUB, 'recursos', 'index.html'), indexPage(bySlug));
+console.log(`OK — índice + ${n} artículos en /public/recursos/  (PREVIEW=${PREVIEW} -> ${PREVIEW ? 'noindex' : 'index'})`);
