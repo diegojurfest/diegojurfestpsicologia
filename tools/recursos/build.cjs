@@ -88,6 +88,12 @@ strong{color:var(--ink);font-weight:600}em{font-style:italic}.hl{color:var(--tea
 .card h2{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);line-height:1.16;margin:0 0 9px}
 .card p{font-size:15px;color:var(--ink-soft);margin:0 0 14px;flex:1}
 .card .read{font-size:14px;font-weight:600;color:var(--teal)}
+.card-cta{background:var(--teal);border-color:var(--teal)}
+.card-cta:hover{border-color:var(--teal-dark)}
+.card-cta .card-meta{color:var(--teal-soft);opacity:1}
+.card-cta h2{color:#fff}
+.card-cta p{color:var(--teal-faint)}
+.card-cta .read{color:#fff}
 @media(max-width:600px){.wrap{padding:36px 20px 60px}.top{padding:14px 18px}.grid,.more-grid{grid-template-columns:1fr}}`;
 
 const head = (title, desc, url, extra = '') => `<meta charset="UTF-8">
@@ -125,7 +131,7 @@ function articlePage(a, bySlug) {
   }) + '</script>';
   const rel = (RELATED[a.slug] || []).map(s => bySlug[s]).filter(Boolean);
   const more = rel.length ? `\n  <div class="more"><div class="more-t">Seguí leyendo</div><div class="more-grid">${
-    rel.map(r => `<a class="rcard" href="/recursos/${r.slug}/"><h3>${esc(r.title)}</h3><span>Leer →</span></a>`).join('')
+    rel.map(r => `<a class="rcard" href="/recursos/${r.slug}/"><h3>${r.titleHtml || esc(r.title)}</h3><span>Leer →</span></a>`).join('')
   }</div></div>` : '';
   return `<!doctype html>
 <html lang="es">
@@ -136,7 +142,7 @@ ${head(a.metaTitle, a.metaDesc, url, schema)}
 ${topbar}
 <main class="wrap">
   <div class="eyebrow">Recursos</div>
-  <h1>${esc(a.title)}</h1>
+  <h1>${a.titleHtml || esc(a.title)}</h1>
   <div class="byline">Lic. Diego Jurfest · ${rt} min de lectura · ${DATE_HUMAN}</div>
   <blockquote class="hook">${fmt(a.hook)}</blockquote>
   <p class="lead">${fmt(a.lead)}</p>
@@ -152,7 +158,8 @@ ${topbar}
 function indexPage(bySlug) {
   const url = `${SITE}/recursos/`;
   const cards = ORDER.map(s => bySlug[s]).filter(Boolean).map(a =>
-    `<a class="card" href="/recursos/${a.slug}/"><div class="card-meta">${readMin(a)} min de lectura</div><h2>${esc(a.title)}</h2><p>${esc(a.metaDesc)}</p><span class="read">Leer →</span></a>`).join('\n      ');
+    `<a class="card" href="/recursos/${a.slug}/"><div class="card-meta">${readMin(a)} min de lectura</div><h2>${a.titleHtml || esc(a.title)}</h2><p>${esc(a.metaDesc)}</p><span class="read">Leer →</span></a>`).join('\n      ');
+  const ctaCard = `<a class="card card-cta" href="${WA}" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','whatsapp_click',{location:'recursos-index-cta'})"><div class="card-meta">El primer paso</div><h2>¿Algo de esto te movió algo?</h2><p>Si alguno de estos textos te resonó, quizás sea momento de darte ese espacio. Una primera charla, sin compromiso.</p><span class="read">Agendá tu primera consulta →</span></a>`;
   return `<!doctype html>
 <html lang="es">
 <head>
@@ -166,9 +173,9 @@ ${topbar}
   <p class="intro">Textos rápidos sobre lo que muchos atravesamos —ansiedad, adaptación, vínculos, empezar terapia— pensados y escritos para acompañarte y reflexionar unos minutos, estés donde estés.</p>
   <div class="grid">
       ${cards}
+      ${ctaCard}
   </div>
-  <a class="cta" href="${WA}" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','whatsapp_click',{location:'recursos-index'})">Agendá tu primera consulta <b>→</b></a>
-  <br><a class="back" href="/">← Volver al inicio</a>
+  <a class="back" href="/">← Volver al inicio</a>
 </main>
 </body>
 </html>`;
@@ -319,19 +326,20 @@ const articles = [
   {
     slug: 'mitos-que-conviene-dejar-atras',
     title: 'Mitos que (te) conviene dejar atrás',
+    titleHtml: 'Mitos que <span class="hl">(te)</span> conviene dejar atrás',
     metaTitle: 'Mitos sobre la terapia y la salud mental que conviene dejar atrás | Lic. Diego Jurfest',
     metaDesc: 'Ideas muy instaladas sobre la terapia, la ansiedad y el bienestar que, sin darte cuenta, te están frenando. Las desarmamos una por una.',
-    hook: 'Crecimos escuchando ciertas frases tantas veces que dejamos de cuestionarlas: "a tu edad ya tendrías que…", "eso es de débiles", "ya se te va a pasar". Y algunas de esas ideas, repetidas sin pensar, terminan pesando más que el problema en sí.',
-    lead: 'Acá van algunos mitos muy instalados sobre la terapia, la ansiedad y el bienestar — y por qué quizás convenga soltarlos.',
+    hook: 'Todos crecimos escuchando algunas frases tantas veces que dejamos de cuestionarlas: "a tu edad ya tendrías que…", "eso no es necesario", "ya se te va a pasar". Y algunas de esas ideas, repetidas sin pensar, pueden terminar pesando más que el problema en sí.',
+    lead: 'Vamos a profundizar en algunos mitos muy instalados sobre la terapia, la ansiedad y el bienestar — y por qué quizás te convenga soltarlos.',
     sections: [
-      { h: '"Ir al psicólogo es para cuando estás muy mal"', body: [{ p: 'La terapia no es solo para las crisis. Sirve para entenderte, tomar decisiones difíciles, frenar a tiempo, ordenar una etapa confusa o simplemente tener un espacio que sea solo tuyo una vez por semana. Pensarla únicamente como un recurso de emergencia es lo que hace que muchos lleguen tarde, cuando algo que se podía trabajar en unas semanas ya se volvió una bola más grande. Cuanto antes, casi siempre, más simple.' }] },
-      { h: '"Pedir ayuda es de débiles"', body: [{ p: 'Es exactamente al revés. Registrar que algo te pasa, ponerle nombre y animarte a buscar apoyo es de las cosas más maduras —y más valientes— que podés hacer. Lo que de verdad cuesta no es pedir ayuda: es venir aguantando todo en silencio, de más, convencido de que "tendrías que poder solo". Nadie espera que te operes a vos mismo; con lo emocional, a veces, pasa lo mismo.' }] },
-      { h: '"A mi edad ya tendría que tener todo resuelto"', body: [{ p: 'La idea de que a los 20 o a los 30 hay que tener el trabajo, la pareja y el rumbo claros está tan instalada como vacía. Casi nadie la cumple; es una etapa de construcción, de probar, equivocarse y volver a empezar. El problema no es no tenerlo resuelto: es la vara imaginaria con la que te comparás, que no te ordena nada y solo te agrega culpa por no estar donde "deberías".' }] },
-      { h: '"La ansiedad se va sola si la ignorás"', body: [{ p: 'Ojalá fuera así. Pero ignorar lo que sentís suele agrandarlo, no achicarlo: lo que no se mira tiende a volver, a veces más fuerte. La ansiedad no se "aguanta" a fuerza de voluntad; se entiende, se le baja el volumen con herramientas concretas y se trabaja lo que la enciende. Mirarla de frente, con calma y sin pelearte con ella, es lo que de verdad la afloja.' }] },
-      { h: '"La terapia online no funciona de verdad"', body: [{ p: 'Es una de las dudas más comunes, y la evidencia es bastante clara: para la mayoría de los motivos de consulta, la videollamada puede ser tan efectiva como el consultorio. Lo que sostiene un proceso no es el sillón, la sala ni los adornos: es el vínculo y el trabajo entre dos personas. Y eso viaja perfecto por una pantalla, con la ventaja extra de hacerlo desde tu lugar seguro, sin traslados ni esperas.' }] },
-      { h: '"Si lo hablo con amigos, no necesito terapia"', body: [{ p: 'Los amigos son oro, y hablar siempre ayuda. Pero un espacio profesional es otra cosa: ahí no tenés que cuidar al otro, ni devolver el favor, ni preocuparte por cómo cae lo que decís. Es un lugar pensado para vos, sin juicio, con alguien formado para ayudarte a entender y trabajar de fondo lo que traés. No compiten entre sí: se complementan.' }] },
-      { h: '"Compararme en redes no me afecta"', body: [{ p: 'Pasamos horas frente a vidas editadas —donde se muestra solo el mejor ángulo— y creemos que a nosotros no nos toca. Pero la comparación constante con esa postal va erosionando el ánimo de a poco, casi sin que lo notes: aparece la sensación de estar siempre un paso atrás, de que a todos les va mejor. Darte cuenta de que estás comparando tu detrás de escena con la película editada de otro ya cambia cómo lo mirás.' }] },
-      { h: 'Soltar estos mitos ya es un movimiento', body: [{ p: 'Cuestionar lo que dabas por hecho —sobre vos, sobre pedir ayuda, sobre "cómo deberías estar" a esta altura— es, en sí mismo, el primer paso. No hace falta creerte todo lo de acá de golpe; alcanza con abrir una rendija de duda. Y si alguno de estos mitos te resonó más de la cuenta, quizás valga la pena darle una vuelta más, esta vez acompañado.' }] },
+      { h: '"Ir al psicólogo es para cuando estás mal"', body: [{ p: 'La terapia no es solo para los momentos de crisis, y puede ser muy útil incluso cuando te sentís bien. Sirve para entenderte, tomar decisiones difíciles, frenar a tiempo, ordenar etapas —confusas o no— o simplemente para tener un espacio que sea solo tuyo alguna vez en tu semana. Pensarla únicamente como un recurso de "emergencia" es lo que hace que muchos empiecen, en algún sentido, tarde: cuando algo que se podía trabajar antes ya se volvió más grande o más complejo.' }] },
+      { h: '"Eso no es necesario"', body: [{ p: 'Es una idea que conviene dar vuelta. Registrar que algo te pasa, entenderlo —y entenderte— dándole un sentido, y animarte a empezar un proceso es una fortaleza, no un lujo. Lo que de verdad cuesta es soltar el convencimiento de que "primero tendría que poder solo": esa exigencia que aplicamos a todo, desde rendir el examen que más nervios da hasta afrontar la situación más difícil. Por eso, cuando algo te está pasando —nuevo o de siempre, importante o no tanto—, es natural que buscar acompañamiento no parezca "necesario". Pero quizás la verdadera pregunta no sea si es necesario, sino por qué esperaríamos a estar mal para permitírnoslo.' }] },
+      { h: '"A mi edad ya tendría que tener todo resuelto"', body: [{ p: 'Hay ideas que parecen leyes de la naturaleza: que a los 20 hay que estar estudiando, que a los 30 hay que tener un trabajo y una pareja con el rumbo claro. Frases hechas, tan instaladas como vacías. La realidad es que todos atravesamos, en algún momento u otro, una etapa de construcción: de probar, equivocarse y también volver a empezar. El problema no es no tenerlo resuelto; es la vara imaginaria con la que te comparás día a día —esa que, en el fondo, no te mide: te desordena— y solo te deja una sensación de culpa por no estar donde "deberías".' }] },
+      { h: '"La ansiedad se va sola, lo mejor es ignorarla"', body: [{ p: 'Ojalá fuera así. Pero ignorar lo que sentís suele agrandarlo, no achicarlo: lo que se esquiva tiende a aparecer por otro lado, y a veces más fuerte. La ansiedad no es algo que se "aguanta" a fuerza de voluntad; se entiende, se trabaja y se le baja el volumen, con herramientas concretas y aprendiendo qué es lo que la enciende. Mirarla de frente, con calma y sin pelearte con ella, es lo que de verdad la afloja con el tiempo. Pero recordá que es un proceso: ni ignorarla ni atacarla como si fuera una guerra van a hacer que desaparezca.' }] },
+      { h: '"La terapia online no funciona de verdad"', body: [{ p: 'Es una de las dudas más comunes, y de las más entendibles. La evidencia es consistente: para muchos de los motivos de consulta más frecuentes —ansiedad, estrés, estados de ánimo— la terapia por videollamada puede funcionar tan bien como la presencial. En la práctica, lo que sostiene un proceso en el tiempo no es el sillón en el que te sentás ni los adornos de la sala: es el vínculo y el trabajo entre dos personas. Y eso hoy viaja perfecto por una pantalla, con la ventaja extra de hacerlo desde tu lugar seguro, sin traslados ni esperas.' }] },
+      { h: '"Si igual lo hablo con amigos, no necesito terapia"', body: [{ p: 'Los amigos son oro, y hablar siempre ayuda. Pero un espacio profesional es otra cosa: ahí no tenés que cuidar al otro, ni devolver el favor, ni preocuparte por cómo cae lo que decís, lo que pensás, o lo que hacés y dejás de hacer. Es un lugar pensado y trabajado especialmente para vos, sin juicios, y con alguien formado para ayudarte a entender y trabajar en profundidad lo que decidas traer. No se trata de dejar de charlar con la gente que tenés cerca; es que estos dos espacios no compiten: se complementan.' }] },
+      { h: '"Lo que veo en las redes no me afecta"', body: [{ p: 'Pasamos horas del día frente a vidas editadas, pensadas para mostrar solo el mejor ángulo, y a veces creemos que a nosotros no nos toca. Pero la comparación constante con esas postales va erosionando el ánimo de a poco, casi sin que lo notemos. Así aparece esa sensación extraña de estar "siempre un paso atrás", de que "todavía tendría que irte mejor". Vale la pena hacer el ejercicio de darte cuenta de que estás comparando tu detrás de escena con la película editada de otro; y solo eso ya cambia cómo lo mirás.' }] },
+      { h: '"Soltar estos mitos ya genera movimiento"', body: [{ p: 'Cuestionar lo que dabas por hecho —sobre vos, sobre pedir ayuda, sobre "cómo deberías estar" en cada momento— es, en sí mismo, el primer paso. No hace falta creerte todo lo que leíste acá de golpe; alcanza con plantearte una primera duda. Y si alguno de estos temas te resonó, quizás valga la pena darle una vuelta más, esta vez acompañado.' }] },
     ],
   },
 ];

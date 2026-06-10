@@ -1,6 +1,6 @@
 const featured = [
   { slug: 'necesito-ir-al-psicologo', title: '¿Necesito ir al psicólogo?', desc: 'Señales simples, sin dramatismo, para darte cuenta.', min: 2 },
-  { slug: 'mitos-que-conviene-dejar-atras', title: 'Mitos que (te) conviene dejar atrás', desc: 'Ideas muy instaladas sobre la terapia y el bienestar que te están frenando.', min: 4 },
+  { slug: 'mitos-que-conviene-dejar-atras', title: <>Mitos que <span style={{ color: 'var(--teal)' }}>(te)</span> conviene dejar atrás</>, desc: 'Ideas muy instaladas sobre la terapia y el bienestar que te están frenando.', min: 6 },
   { slug: 'dormir-mejor-cuando-cuesta-apagar-la-cabeza', title: 'Dormir mejor cuando cuesta apagar la cabeza', desc: 'Por qué pasa y qué podés hacer, con herramientas realistas.', min: 3 },
 ]
 
