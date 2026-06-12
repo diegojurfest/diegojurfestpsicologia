@@ -12,8 +12,8 @@ import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
-// Cambiar a true para lanzar Recursos a todo el público (producción).
-const RECURSOS_LIVE = false
+// Recursos en vivo para todo el público.
+const RECURSOS_LIVE = true
 
 export default function App() {
   const { lang, setLang, t, waUrl, mailUrl } = useLanguage()
@@ -21,10 +21,12 @@ export default function App() {
   const [showRecursos, setShowRecursos] = useState(RECURSOS_LIVE)
   useEffect(() => {
     if (RECURSOS_LIVE) return
-    if (new URLSearchParams(window.location.search).get('preview') === 'recursos') {
-      localStorage.setItem('rec_prev', '1')
-    }
-    if (localStorage.getItem('rec_prev') === '1') setShowRecursos(true)
+    try {
+      if (new URLSearchParams(window.location.search).get('preview') === 'recursos') {
+        localStorage.setItem('rec_prev', '1')
+      }
+      if (localStorage.getItem('rec_prev') === '1') setShowRecursos(true)
+    } catch { /* almacenamiento no disponible (modo privado) */ }
   }, [])
 
   return (
