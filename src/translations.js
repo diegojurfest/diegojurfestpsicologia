@@ -13,6 +13,7 @@ export const translations = {
     nav_approach: 'Cómo trabajo',
     nav_first: 'Primera consulta',
     nav_contact: 'Contacto',
+    nav_recursos: 'Recursos',
 
     about_eyebrow: 'SOBRE MÍ',
     about_title_a: 'Hablemos el ',
@@ -22,10 +23,10 @@ export const translations = {
     about_p1_a: 'Soy ',
     about_p1_b: 'Diego',
     about_p1_c: ', psicólogo egresado de la Universidad Católica del Uruguay con un enfoque clínico integrativo: no me encasillo en una única corriente teórica, sino que adapto las herramientas a las necesidades específicas de cada persona y cada momento.',
-    about_p2: 'También soy un joven judío uruguayo, hijo único, futbolero y apasionado por lo que hago. Hablo español, inglés, y cada día mejoro un poco más mi hebreo. Fui toda mi vida a colegio judío y a la <em>tnuá</em>. Viví un año en Israel durante mi <em>shnat hajshará</em>, y dediqué tres años de mi vida a devolverle a la <em>tnuá</em> todo lo que me dio, aportando a la comunidad desde adentro.',
-    about_p3: 'En 2023 mis padres hicieron <em>aliá</em>. Yo tomé la difícil decisión de quedarme en Uruguay, en mi casa. Desde entonces vi de cerca una realidad que muchos atraviesan: en este tiempo pasaron más meses en guerra que en paz.',
+    about_p2: 'También soy uruguayo, hijo único, futbolero y apasionado por lo que hago. Hablo español, inglés, y cada día mejoro un poco más mi hebreo. Conozco de cerca lo que significa moverse entre idiomas y culturas, y estoy muy ligado a la realidad de la comunidad judía e israelí: vivir lejos de donde uno creció, adaptarse a un lugar nuevo y sostener todo eso… muchas veces en silencio.',
+    about_p3: 'También entiendo el peso de los momentos difíciles, la distancia con los seres queridos, la incertidumbre de "qué va a pasar mañana" y los contextos de tensión y conflicto. No necesitás explicarme esa realidad ni el significado de lo que estás atravesando para que empecemos a trabajarlo juntos.',
     about_p4: 'Si lo que buscás es cercanía con empatía real, entendimiento y claridad, y no perder el tiempo explicando conceptos que solo podés entender viviéndolos — entonces este puede ser el espacio que estás buscando.',
-    about_p5: 'Mi enfoque está en ayudar a jóvenes y adultos a encontrar un espacio, por sobre todo, sano; donde la claridad y el equilibrio son la base del trabajo.',
+    about_p5: 'Mi enfoque está en ayudar a jóvenes y adultos a encontrar un espacio, por sobre todo, sano; donde la claridad, el equilibrio y la confianza son la base del trabajo.',
 
     help_eyebrow: 'EN QUÉ TE PUEDO AYUDAR',
     help_title_a: 'Procesos que ',
@@ -100,6 +101,7 @@ export const translations = {
     nav_approach: 'How I work',
     nav_first: 'First session',
     nav_contact: 'Contact',
+    nav_recursos: 'Resources',
 
     about_eyebrow: 'ABOUT ME',
     about_title_a: "Let's speak the ",
@@ -187,6 +189,7 @@ export const translations = {
     nav_approach: 'איך אני עובד',
     nav_first: 'פגישה ראשונה',
     nav_contact: 'יצירת קשר',
+    nav_recursos: 'משאבים',
 
     about_eyebrow: 'עליי',
     about_title_a: 'בוא נדבר את ',

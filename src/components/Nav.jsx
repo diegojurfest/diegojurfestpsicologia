@@ -8,7 +8,7 @@ export default function Nav({ t, lang, setLang, showRecursos }) {
     ['#help', t.nav_help],
     ['#approach', t.nav_approach],
     ['#first-session', t.nav_first],
-    ...(showRecursos ? [['/recursos/', 'Recursos']] : []),
+    ...(showRecursos ? [['/recursos/', t.nav_recursos]] : []),
     ['#contact', t.nav_contact],
   ]
 
