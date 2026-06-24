@@ -17,8 +17,9 @@ const RECURSOS_LIVE = true
 export default function App() {
   const { lang, setLang, t, waUrl, mailUrl } = useLanguage()
   useScrollReveal()
-  // Recursos y FAQ están escritos solo en español por ahora. En inglés/hebreo
-  // se ocultan para no mezclar idiomas (traducción pendiente).
+  // Las FAQ ya están traducidas (ES/EN/HE) y se muestran siempre.
+  // El bloque Recursos enlaza a los artículos (en español), así que por ahora
+  // se muestra solo en español para no derivar a contenido en otro idioma.
   const recursosEs = RECURSOS_LIVE && lang === 'es'
 
   return (
@@ -31,7 +32,7 @@ export default function App() {
       {recursosEs && <HomeRecursos />}
       <FirstSession t={t} />
       <Contact t={t} waUrl={waUrl} mailUrl={mailUrl} />
-      {recursosEs && <FAQ />}
+      <FAQ t={t} />
       <Footer t={t} waUrl={waUrl} mailUrl={mailUrl} />
       {RECURSOS_LIVE && <FloatingWhatsApp waUrl={waUrl} />}
     </>
