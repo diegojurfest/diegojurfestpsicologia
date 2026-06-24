@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useLanguage, useScrollReveal } from './hooks'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
@@ -18,30 +17,23 @@ const RECURSOS_LIVE = true
 export default function App() {
   const { lang, setLang, t, waUrl, mailUrl } = useLanguage()
   useScrollReveal()
-  const [showRecursos, setShowRecursos] = useState(RECURSOS_LIVE)
-  useEffect(() => {
-    if (RECURSOS_LIVE) return
-    try {
-      if (new URLSearchParams(window.location.search).get('preview') === 'recursos') {
-        localStorage.setItem('rec_prev', '1')
-      }
-      if (localStorage.getItem('rec_prev') === '1') setShowRecursos(true)
-    } catch { /* almacenamiento no disponible (modo privado) */ }
-  }, [])
+  // Recursos y FAQ están escritos solo en español por ahora. En inglés/hebreo
+  // se ocultan para no mezclar idiomas (traducción pendiente).
+  const recursosEs = RECURSOS_LIVE && lang === 'es'
 
   return (
     <>
-      <Nav t={t} lang={lang} setLang={setLang} showRecursos={showRecursos} />
+      <Nav t={t} lang={lang} setLang={setLang} showRecursos={recursosEs} />
       <Hero t={t} waUrl={waUrl} />
       <About t={t} />
       <Help t={t} />
       <Approach t={t} />
-      {showRecursos && <HomeRecursos />}
+      {recursosEs && <HomeRecursos />}
       <FirstSession t={t} />
       <Contact t={t} waUrl={waUrl} mailUrl={mailUrl} />
-      {showRecursos && <FAQ />}
+      {recursosEs && <FAQ />}
       <Footer t={t} waUrl={waUrl} mailUrl={mailUrl} />
-      {showRecursos && <FloatingWhatsApp waUrl={waUrl} />}
+      {RECURSOS_LIVE && <FloatingWhatsApp waUrl={waUrl} />}
     </>
   )
 }

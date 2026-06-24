@@ -336,6 +336,15 @@ body {
   background: linear-gradient(100deg, var(--paper) 0%, rgba(252, 250, 244, 0.4) 18%, rgba(252, 250, 244, 0) 44%);
   pointer-events: none;
 }
+/* Hebreo (RTL): espejamos el hero — foto a la izquierda, texto a la derecha */
+[dir="rtl"] .hero-photo-wrap { right: auto; left: 0; }
+[dir="rtl"] .hero-photo-img {
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, #000 26%), linear-gradient(to bottom, transparent 0%, #000 4%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(to left, transparent 0%, #000 26%), linear-gradient(to bottom, transparent 0%, #000 4%, #000 93%, transparent 100%);
+}
+[dir="rtl"] .hero-photo-wrap::after {
+  background: linear-gradient(260deg, var(--paper) 0%, rgba(252, 250, 244, 0.4) 18%, rgba(252, 250, 244, 0) 44%);
+}
 
 /* ============ SECTION GENERIC ============ */
 section { padding: 120px 40px; position: relative; }
@@ -401,7 +410,7 @@ section { padding: 120px 40px; position: relative; }
   font-family: var(--serif);
   line-height: 1;
 }
-[dir="rtl"] .about-quote::before { left: auto; right: -20px; }
+[dir="rtl"] .about-quote::before { content: '\201D'; left: auto; right: -20px; }
 .about-text {
   font-family: var(--sans);
   font-size: 16px;
@@ -766,6 +775,11 @@ footer::before {
             mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
     -webkit-mask-composite: source-over;
             mask-composite: add;
+  }
+  /* En mobile la foto va apilada: el velo es siempre por abajo, también en RTL */
+  [dir="rtl"] .hero-photo-img {
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
   }
   .hero-photo-wrap::after { display: none; }
   section { padding: 80px 24px; }
