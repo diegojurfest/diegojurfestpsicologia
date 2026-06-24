@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const PUB = path.resolve(__dirname, '../../public');
-const PREVIEW = true;
+const PREVIEW = false;
 const DATE_ISO = '2026-06-10';
 const DATE_HUMAN = 'Junio, 2026';
 const SITE = 'https://diegojurfestpsicologia.com';

@@ -3,12 +3,72 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://diegojurfestpsicologia.com/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://diegojurfestpsicologia.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://diegojurfestpsicologia.com/"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://diegojurfestpsicologia.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://diegojurfestpsicologia.com/"/>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/necesito-ir-al-psicologo/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/mitos-que-conviene-dejar-atras/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/ansiedad-cuando-la-guerra-esta-cerca/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/elegir-psicologo-en-espanol-viviendo-lejos/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/hacer-alia-desafio-emocional/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/empezar-terapia-por-primera-vez/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/como-es-una-sesion-de-terapia-online/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/dormir-mejor-cuando-cuesta-apagar-la-cabeza/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegojurfestpsicologia.com/recursos/vivir-entre-dos-culturas/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
